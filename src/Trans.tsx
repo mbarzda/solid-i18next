@@ -1,5 +1,5 @@
 import { TFunctionKeys } from 'i18next';
-import { useTransContext } from '.';
+import { useTransContext } from './TransProvider';
 
 export const Trans = (props: { key: TFunctionKeys; children?: string }) => {
     const [t] = useTransContext();
