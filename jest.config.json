@@ -1,0 +1,15 @@
+{
+    "projects": [
+        {
+            "displayName": "browser",
+            "preset": "solid-jest/preset/browser",
+            "testMatch": ["<rootDir>/test/browser/**/*.test.*"]
+        },
+        {
+            "displayName": "node",
+            "preset": "solid-jest/preset/node",
+            "testEnvironment": "node",
+            "testMatch": ["<rootDir>/test/node/**/*.test.*"]
+        }
+    ]
+}
