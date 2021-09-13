@@ -2,7 +2,7 @@ import i18next, { InitOptions } from 'i18next';
 import { Component } from 'solid-js';
 import { renderToString } from 'solid-js/web';
 import { render } from 'solid-testing-library';
-import { TransProvider } from '../../src';
+import { TransProvider } from '../src';
 
 export const messages = {
     custom_interpolation: {

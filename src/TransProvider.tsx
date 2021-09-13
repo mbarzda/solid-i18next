@@ -41,9 +41,13 @@ export const useTransContext = () => useContext(TransContext);
 export const TransProvider = (
     props: { instance?: i18n; lng?: string; options?: InitOptions } & PropsWithChildren
 ): JSXElement => {
-    const instance = props.instance || i18next;
-
-    const context = createTransContext(instance, Object.assign({ lng: props.lng, resources: {} }, props.options));
-
-    return <TransContext.Provider value={context} children={props.children} />;
+    return (
+        <TransContext.Provider
+            value={createTransContext(
+                props.instance || i18next,
+                Object.assign({ lng: props.lng, resources: {} }, props.options)
+            )}
+            children={props.children}
+        />
+    );
 };

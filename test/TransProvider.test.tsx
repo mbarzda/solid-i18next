@@ -1,4 +1,8 @@
-import { useTransContext } from '../src';
+import i18next, { i18n } from 'i18next';
+import { JSXElement } from 'solid-js';
+import { renderToString } from 'solid-js/web';
+import { render } from 'solid-testing-library';
+import { TransProvider, useTransContext } from '../src';
 import { messages, renderComponent, resources_lt } from './shared';
 
 describe('TransProvider component', () => {
@@ -6,6 +10,36 @@ describe('TransProvider component', () => {
         renderComponent(() => {
             expect(useTransContext()).toBeInstanceOf(Array);
             return '';
+        });
+    });
+
+    describe('Instance must be the same', () => {
+        function renderApp(fn: () => JSXElement) {
+            if (global.isNodeEnv) {
+                renderToString(fn);
+            } else {
+                render(fn);
+            }
+        }
+
+        test('Default', () => {
+            const Comp = () => {
+                const [, { getI18next }] = useTransContext();
+                expect(getI18next()).toStrictEqual(i18next);
+            };
+            renderApp(() => <TransProvider children={<Comp />} />);
+        });
+
+        test('New instance', () => {
+            let instance: i18n;
+            const Comp = () => {
+                const [, { getI18next }] = useTransContext();
+                expect(getI18next()).toStrictEqual(instance);
+            };
+            renderApp(() => {
+                instance = i18next.createInstance();
+                return <TransProvider instance={instance} children={<Comp />} />;
+            });
         });
     });
 
