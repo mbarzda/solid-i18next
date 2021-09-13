@@ -3,13 +3,13 @@
         {
             "displayName": "browser",
             "preset": "solid-jest/preset/browser",
-            "testMatch": ["<rootDir>/test/browser/**/*.test.*"]
+            "testMatch": ["<rootDir>/test/**/*.test.*"]
         },
         {
             "displayName": "node",
             "preset": "solid-jest/preset/node",
-            "testEnvironment": "node",
-            "testMatch": ["<rootDir>/test/node/**/*.test.*"]
+            "testEnvironment": "<rootDir>/test/node.ts",
+            "testMatch": ["<rootDir>/test/**/*.test.*"]
         }
     ]
 }

@@ -1,12 +1,10 @@
-import { Trans } from '../../src';
-import { messages, resources_lt } from '../shared';
-import { renderComponent } from './common';
+import { Trans } from '../src';
+import { messages, renderComponent, resources_lt, result } from './shared';
 
 describe('Trans: Interpolation', () => {
     const resources = {
         lt: resources_lt,
     };
-    const result = { en: 'Hello John Doe!', lt: 'Labas, John Doe!', pl: 'Cześć John Doe!' };
 
     describe('Default', () => {
         function renderDefault(language?: string) {
@@ -22,21 +20,21 @@ describe('Trans: Interpolation', () => {
         }
 
         test('Renders interpolation message', () => {
-            expect(renderDefault().textContent).toEqual(result.en);
+            expect(renderDefault()).toEqual(result.interpolation.en);
         });
 
         test('Renders interpolation translated message', () => {
-            expect(renderDefault('lt').textContent).toEqual(result.lt);
+            expect(renderDefault('lt')).toEqual(result.interpolation.lt);
         });
 
         test('Renders as textNode', () => {
             expect(
                 renderComponent(() => (
-                    <Trans key="greeting_custom_interpolation" options={{ name: 'John Doe' }}>
-                        Hello {{ name }}
+                    <Trans key="greeting_interpolation" options={{ name: 'John Doe' }}>
+                        {'Hello {{ name }}!'}
                     </Trans>
                 ))
-            );
+            ).toEqual(result.interpolation.en);
         });
     });
 
@@ -56,21 +54,25 @@ describe('Trans: Interpolation', () => {
         }
 
         test('Renders interpolation message', () => {
-            expect(renderCustom().textContent).toEqual(result.en);
+            expect(renderCustom()).toEqual(result.interpolation.en);
         });
 
         test('Renders interpolation translated message', () => {
-            expect(renderCustom('lt').textContent).toEqual(result.lt);
+            expect(renderCustom('lt')).toEqual(result.interpolation.lt);
         });
 
         test('Renders as textNode', () => {
             expect(
-                renderComponent(() => (
-                    <Trans key="greeting_custom_interpolation" options={{ name: 'John Doe' }}>
-                        Hello ##name##
-                    </Trans>
-                ))
-            );
+                renderComponent(
+                    () => (
+                        <Trans key="greeting_custom_interpolation" options={{ name: 'John Doe' }}>
+                            Hello ##name##!
+                        </Trans>
+                    ),
+                    undefined,
+                    { interpolation }
+                )
+            ).toEqual(result.interpolation.en);
         });
     });
 
@@ -88,7 +90,7 @@ describe('Trans: Interpolation', () => {
         }
 
         test('Renders interpolation message', () => {
-            expect(renderDefault().textContent).toEqual(result.en);
+            expect(renderDefault()).toEqual(result.interpolation.en);
         });
     });
 });
