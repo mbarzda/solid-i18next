@@ -8,7 +8,7 @@ describe('TransProvider component', () => {
         renderToString(() => <TransProvider children={<Comp />} />);
     }
 
-    it('Should use TransContext', () => {
+    test('Should use TransContext', () => {
         renderComponent(() => {
             expect(useTransContext()).toBeInstanceOf(Array);
             return '';
@@ -16,7 +16,7 @@ describe('TransProvider component', () => {
     });
 
     describe('Add resources', () => {
-        it('Should be defined', () => {
+        test('Should be defined', () => {
             renderComponent(() => {
                 const [, actions] = useTransContext();
                 expect(actions.addResources).toBeDefined();
@@ -24,11 +24,11 @@ describe('TransProvider component', () => {
             });
         });
 
-        it('Adds resources', () => {
+        test('Adds resources', () => {
             renderComponent(() => {
                 const [, actions] = useTransContext();
                 actions.addResources('lt', 'translation', resources_lt.translation);
-                expect(actions.getI18next().getResource('lt', 'translation', 'greeting')).toEqual(messages.lt);
+                expect(actions.getI18next().getResource('lt', 'translation', 'greeting')).toEqual(messages.simple.lt);
                 return '';
             });
         });

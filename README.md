@@ -7,7 +7,7 @@ The purpose of this library is to provide ability to support **i18next** interna
 Installation:
 
 ```sh
-npm install @mbarzda/solid-i18next --save
+npm install @mbarzda/solid-i18next i18next --save
 ```
 
 ### Simple Example
@@ -40,13 +40,13 @@ render(() => (
 
 ### i18next Modules
 
-i18next has many modules. They can be loaded with `use` method. There is need to have an `i18next` instance.
+**i18next** has many modules. They can be loaded with `use` method. There is need to have an `i18next` instance.
 
 There is possible to use default `i18next` instance or create separate instance.
 
-`<TransProvider />` initializes `i18next` (`i18next.init()`) under the hood, so you need create an instance before the component initializes.
+`<TransProvider />` initializes **i18next** (`i18next.init()`) under the hood, so you need create an instance before the component initializes.
 
-Modules options and other `i18next` options must be provided with `options` property.
+Modules options and other **i18next** options must be provided with `options` property.
 
 ```tsx
 import { TransProvider, Trans } from '@mbarzda/solid-i18next';
@@ -147,7 +147,7 @@ const Component = () => {
 
 ### T Function
 
-i18next `t` function is essential and sometimes there is need to use it without component. `TransContext` provides it in case you need it.
+**i18next** `t` function is essential and sometimes there is need to use it without component. `TransContext` provides it in case you need it.
 
 ```tsx
 const Component = () => {
@@ -159,7 +159,7 @@ const Component = () => {
 ### i18next Instance
 
 If there is need something more than this library provides for **i18next**, you can get i18next instance from `TransContext` and to do something with it.
-If you are using default instance, you can use `i18next` global.
+If you are using default instance, you also can use `i18next` global.
 
 ```tsx
 const Component = () => {

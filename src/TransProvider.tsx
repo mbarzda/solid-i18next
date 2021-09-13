@@ -9,23 +9,24 @@ export interface TransProviderActions {
 
 const TransContext = createContext<[TFunction, TransProviderActions]>();
 
-function createTransContext(lng: string, instance: i18n): [TFunction, TransProviderActions] {
-    const [trans, setTrans] = createSignal<TFunction>(i18next.t.bind(i18next));
+function createTransContext(instance: i18n, options: InitOptions): [TFunction, TransProviderActions] {
+    const [translate, setTranslate] = createSignal<TFunction>(i18next.t.bind(i18next));
+
+    instance.init(options, (_, t) => setTranslate(() => t));
 
     async function changeLanguage(lng: string) {
         const t = await instance.changeLanguage(lng);
-        setTrans(() => t);
+        setTranslate(() => t);
     }
 
     function addResources(lng: string, ns: string, resources: any): i18n {
-        return instance.addResources(lng, ns, resources);
+        instance.addResources(lng, ns, resources);
+        return i18next;
     }
-
-    if (lng) changeLanguage(lng);
 
     return [
         (key: TFunctionKeys, defaultValue?: string, options?: TOptions | string) => {
-            return trans()(key, defaultValue, options);
+            return translate()(key, defaultValue, options);
         },
         {
             addResources,
@@ -38,12 +39,11 @@ function createTransContext(lng: string, instance: i18n): [TFunction, TransProvi
 export const useTransContext = () => useContext(TransContext);
 
 export const TransProvider = (
-    props: { lng?: string; instance?: i18n; options?: InitOptions } & PropsWithChildren
+    props: { instance?: i18n; lng?: string; options?: InitOptions } & PropsWithChildren
 ): JSXElement => {
     const instance = props.instance || i18next;
-    instance.init(props.options);
 
-    const context = createTransContext(props.options?.lng || props.lng, instance);
+    const context = createTransContext(instance, Object.assign({ lng: props.lng }, props.options));
 
-    return <TransContext.Provider value={context}>{props.children}</TransContext.Provider>;
+    return <TransContext.Provider value={context} children={props.children} />;
 };

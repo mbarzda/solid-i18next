@@ -1,7 +1,7 @@
 import { renderToString } from 'solid-js/web';
 
 import { Trans, TransProvider } from '../../src';
-import { messages, messages_custom_interpolation, messages_interpolation, resources_lt } from '../shared';
+import { messages, resources_lt } from '../shared';
 
 describe('Trans component', () => {
     const resources = {
@@ -12,21 +12,21 @@ describe('Trans component', () => {
         function renderCustom(language?: string): string {
             return renderToString(() => (
                 <TransProvider lng={language} options={{ resources }}>
-                    <Trans key="greeting">{messages.en}</Trans>
+                    <Trans key="greeting">{messages.simple.en}</Trans>
                 </TransProvider>
             ));
         }
 
-        it('Renders default message', () => {
-            expect(renderCustom()).toEqual(messages.en);
+        test('Renders default message', () => {
+            expect(renderCustom()).toEqual(messages.simple.en);
         });
 
-        it('Renders translated message', () => {
-            expect(renderCustom('lt')).toEqual(messages.lt);
+        test('Renders translated message', () => {
+            expect(renderCustom('lt')).toEqual(messages.simple.lt);
         });
 
-        it('Renders fallback message', () => {
-            expect(renderCustom('pl')).toEqual(messages.en);
+        test('Renders fallback message', () => {
+            expect(renderCustom('pl')).toEqual(messages.simple.en);
         });
     });
 
@@ -35,7 +35,7 @@ describe('Trans component', () => {
             return renderToString(() => (
                 <TransProvider lng={language} options={{ resources }}>
                     <Trans key="greeting_interpolation" options={{ name: 'Mr. X' }}>
-                        {messages_interpolation.en}
+                        {messages.interpolation.en}
                     </Trans>
                 </TransProvider>
             ));
@@ -46,26 +46,28 @@ describe('Trans component', () => {
             return renderToString(() => (
                 <TransProvider lng={language} options={{ interpolation, resources }}>
                     <Trans key="greeting_custom_interpolation" options={{ name: 'Mr. X' }}>
-                        {messages_custom_interpolation.en}
+                        {messages.custom_interpolation.en}
                     </Trans>
                 </TransProvider>
             ));
         }
 
-        it('Renders default interpolation message', () => {
-            expect(renderDefault()).toEqual('Hello Mr. X!');
+        const result = { en: 'Hello Mr. X!', lt: 'Labas, Mr. X!' };
+
+        test('Renders default interpolation message', () => {
+            expect(renderDefault()).toEqual(result.en);
         });
 
-        it('Renders default interpolation translated message', () => {
-            expect(renderDefault('lt')).toEqual('Labas, Mr. X!');
+        test('Renders default interpolation translated message', () => {
+            expect(renderDefault('lt')).toEqual(result.lt);
         });
 
-        it('Renders custom interpolation message', () => {
-            expect(renderCustom()).toEqual('Hello Mr. X!');
+        test('Renders custom interpolation message', () => {
+            expect(renderCustom()).toEqual(result.en);
         });
 
-        it('Renders custom interpolation translated message', () => {
-            expect(renderCustom('lt')).toEqual('Labas, Mr. X!');
+        test('Renders custom interpolation translated message', () => {
+            expect(renderCustom('lt')).toEqual(result.lt);
         });
     });
 });
