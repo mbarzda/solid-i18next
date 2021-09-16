@@ -1,4 +1,4 @@
-import i18next, { i18n } from 'i18next';
+import { i18n } from 'i18next';
 import { JSXElement } from 'solid-js';
 import { renderToString } from 'solid-js/web';
 import { render } from 'solid-testing-library';
@@ -22,10 +22,15 @@ describe('TransProvider component', () => {
             }
         }
 
+        let i18next: i18n;
+        beforeEach(async () => {
+            i18next = (await import('i18next')).default;
+        });
+
         test('Default', () => {
             const Comp = () => {
                 const [, { getI18next }] = useTransContext();
-                expect(getI18next()).toStrictEqual(i18next);
+                expect(getI18next().store).toStrictEqual(i18next.store);
             };
             renderApp(() => <TransProvider children={<Comp />} />);
         });
@@ -34,7 +39,7 @@ describe('TransProvider component', () => {
             let instance: i18n;
             const Comp = () => {
                 const [, { getI18next }] = useTransContext();
-                expect(getI18next()).toStrictEqual(instance);
+                expect(getI18next().store).toStrictEqual(instance.store);
             };
             renderApp(() => {
                 instance = i18next.createInstance();
