@@ -45,6 +45,7 @@
     "i18next": "~20.6.1",
     "solid-js": "~1.0.0"
   },
+  "repository": "github:mbarzda/solid-i18next",
   "scripts": {
     "prebuild": "rimraf ./dist",
     "build": "rollup -c",

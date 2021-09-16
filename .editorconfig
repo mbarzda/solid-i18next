@@ -8,5 +8,5 @@ indent_size = 4
 indent_style = space
 trim_trailing_whitespace = true
 
-[package.json]
+[{package.json,.github/workflows/*.yml}]
 indent_size = 2
