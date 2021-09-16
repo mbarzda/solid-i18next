@@ -1,5 +1,6 @@
 {
   "author": "Martynas Barzda <martynas@barzda.pro>",
+  "browser": "./dist/index.mjs",
   "description": "i18next for Solid",
   "devDependencies": {
     "@babel/core": "^7.15.5",
@@ -29,7 +30,7 @@
     }
   },
   "files": [
-    "./dist"
+    "dist"
   ],
   "keywords": [
     "i18next",
@@ -42,7 +43,7 @@
   "name": "@mbarzda/solid-i18next",
   "peerDependencies": {
     "i18next": "~20.6.1",
-    "solid-js": "~1.1.0"
+    "solid-js": "~1.0.0"
   },
   "scripts": {
     "prebuild": "rimraf ./dist",
