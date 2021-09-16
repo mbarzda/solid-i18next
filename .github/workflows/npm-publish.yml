@@ -19,3 +19,5 @@ jobs:
       - run: npm cit
       - run: npm build
       - run: npm publish --public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
