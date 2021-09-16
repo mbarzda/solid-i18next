@@ -12,7 +12,7 @@ with `<TranProvider />` and `<Trans />` components.
     1. [T Function](#t-function)
     1. [i18next Modules](#i18next-modules)
     1. [i18next Instance](#i18next-instance)
-    1. [Interpolation](#interpolation)
+1. [Interpolation](#interpolation)
     1. [Pluralization](#pluralization)
 1. [API](#api)
 
@@ -26,7 +26,7 @@ npm install @mbarzda/solid-i18next i18next --save
 
 ### Simple Example
 
-`<TransProvider />` must wrap Solid application's most parent component (e.g. `<App />`). `<Trans />` component's' `key` property is mandatory.
+`<TransProvider />` must wrap Solid application's most parent component (e.g. `<App />`). `<Trans />` component's `key` property is mandatory.
 
 Default value can be wrapped with `<Trans />` component or set with `options` or `children` property.
 
@@ -44,7 +44,7 @@ render(() => (
             {/* or */}
             <Trans key="greeting">Hello!</Trans>
             {/* or */}
-            <Trans key="greeting" options={{defaultValue: 'Hello! }} />
+            <Trans key="greeting" options={{ defaultValue: 'Hello!' }} />
             {/* or */}
             <Trans key="greeting" options="Hello!" />
             {/* or */}
@@ -91,23 +91,20 @@ Default language can be provided to `<TransProvider />` with `lng` or `options` 
 <TransProvider options={{lng: 'pl'}} children={...} />
 ```
 
-To change language you need to use `TransContext` and call `changeLanguage`.
+To change a language you need to use `TransContext` and call `changeLanguage`.
 
 ```tsx
 import { useTransContext } from '@mbarzda/solid-18next';
 
 const Component = () => {
-    const [, actions] = useTransContext();
-    function changeLanguage(lng: string) {
-        return () => actions.changeLanguage(lng);
-    }
+    const [, { changeLanguage }] = useTransContext();
 
     return (
         <article>
-            <button type="button" onClick={changeLanguage('en')}>
+            <button type="button" onClick={() => changeLanguage('en')}>
                 English
             </button>
-            <button type="button" onClick={changeLanguage('lt')}>
+            <button type="button" onClick={() => changeLanguage('lt')}>
                 Lietuvių
             </button>
         </article>
@@ -117,12 +114,22 @@ const Component = () => {
 
 ### T Function
 
-**i18next** `t` function is essential and sometimes there is need to use it without component. `TransContext` provides it in case you need it.
+**i18next** have `t` function, which is essential and sometimes there is need to use it without `<Trans />` component.
+`TransContext` provides it in case you need it.
 
 ```tsx
 const Component = () => {
     const [t] = useTransContext();
-    return isLogin() ? t('greeting', 'Hello!') : t('bye', 'Bye!');
+    const messages = {
+        get greeting() {
+            return t('greeting', 'Hello!');
+        },
+        get bye() {
+            return t('bye', 'Bye!');
+        },
+    };
+
+    return <>{isLogin() ? messages.greeting : messages.bye}</>;
 };
 ```
 
@@ -131,7 +138,7 @@ const Component = () => {
 **i18next** has [many modules](https://www.i18next.com/overview/plugins-and-utils).
 They can be loaded with `use` method. There is need to have an `i18next` instance.
 
-There is possible to use default `i18next` instance or create separate one.
+There is possible to use default `i18next` instance or create a separate one.
 
 `<TransProvider />` initializes **i18next** (`i18next.init()`) under the hood, so you need to create an instance before the component initializes.
 
@@ -145,7 +152,8 @@ import HttpBackend from 'i18next-http-backend';
 // Use modules with default instance.
 render(() => {
     i18next.use(HttpBackend);
-    const backend = { backend: { loadPath: '/locales/{{lng}}/{{ns}}.json' } };
+
+    const backend = { loadPath: '/locales/{{lng}}/{{ns}}.json' };
 
     return (
         <TransProvider options={{ backend }}>
@@ -162,7 +170,7 @@ render(() => {
     const instance = i18next.createInstance();
     instance.use(HttpBackend);
 
-    const backend = { backend: { loadPath: '/locales/{{lng}}/{{ns}}.json' } };
+    const backend = { loadPath: '/locales/{{lng}}/{{ns}}.json' };
 
     return (
         <TransProvider instance={instance} options={{ backend }}>
@@ -176,23 +184,27 @@ render(() => {
 
 ### i18next Instance
 
-If there is need something more than this library provides for **i18next**, you can get **i18next** instance from `TransContext` and to do something with it.
+If there is need something more than this library provides, you can get **i18next** instance from `TransContext` and to do something with it.
 If you are using default instance, you also can use `i18next` global.
 
 ```tsx
 const Component = () => {
-    const [, actions] = useTransContext();
-    actions.getI18next().on('loaded', () => {...});
-    {/* or, if using default instance */}
-    i18next.on('loaded', () => {...})
+    const [, { getI18next }] = useTransContext();
+    getI18next().on('loaded', () => {...});
+
+    {/* or, if you are using default instance */}
+
+    i18next.on('loaded', () => {...});
+
     return <></>;
 };
 ```
 
 ## Interpolation
 
-Default interpolation uses `{{` as prefix and `}}` as suffix. Solid uses `{` and `}` to define children or point to reference. In that case
-messages with default interpolation must be put as string. Values should be provided through `options` property of `<Trans />` component.
+Default interpolation uses `{{` and `}}` as prefix and suffix. Solid uses `{` and `}` for properties propagation. In that case
+messages with default interpolation must be put as string. Placeholder values should be provided
+through `options` property of `<Trans />` component.
 
 ```tsx
 <Trans key="greeting" options={{ name: 'John Doe' }}>
@@ -200,11 +212,12 @@ messages with default interpolation must be put as string. Values should be prov
 </Trans>
 ```
 
-Also **i18next** allows to define custom interpolation's prefix and suffix.
+**i18next** also allows to define custom interpolation prefix and suffix.
 
 ```tsx
 const resources = { lt: { greeting: 'Labas, ##name##!' } };
 const interpolation = { prefix: '##', suffix: '##' };
+
 <TransProvider options={{ interpolation, resources }}>
     <Trans key="greeting" options={{ name: 'John Doe' }}>
         Hello ##name##!
@@ -214,7 +227,7 @@ const interpolation = { prefix: '##', suffix: '##' };
 
 ### Pluralization
 
-**i18next** provides default pluralization [feature](https://www.i18next.com/translation-function/plurals),
+**i18next** provides default [pluralization feature](https://www.i18next.com/translation-function/plurals),
 but that may be inconsistent through different languages
 and you would prefer something like [ICU format](https://unicode-org.github.io/icu/userguide/format_parse/messages/).
 
@@ -229,7 +242,7 @@ instance.use(ICU);
 
 const resources = {
     lt: {
-        photos: 'Tu { numPhotos, select, 0 { neturi nuotraukų } other { turi { numPhotos, plural, one {# nuotrauką} few {# nuotraukas} other {# nuotraukų} }}}.'
+        photos: 'Tu { numPhotos, select, 0 {neturi nuotraukų} other { turi { numPhotos, plural, one {# nuotrauką} few {# nuotraukas} other {# nuotraukų} }}}.'
     }
 }
 
@@ -250,7 +263,7 @@ const resources = {
 | lng      | language, `options.lng` overrides it                                                             | No       |
 | options  | i18next init options, see: [InitOptions](https://www.i18next.com/overview/configuration-options) | No       |
 
-`useTransContext` function returns the array. The first member is **i18next** `t` function, second - the list of actions: `[TFunction, TransProviderActions]`.
+`useTransContext` function returns the array. The first item is `t` function, second - the list of actions: `[TFunction, TransProviderActions]`.
 
 `TransProviderActions`
 
@@ -264,5 +277,5 @@ const resources = {
 
 | Property | Description                                                                                                     | Required |
 | -------- | --------------------------------------------------------------------------------------------------------------- | -------- |
-| key      | translation key or keys [TFunctionKeys](https://www.i18next.com/translation-function/essentials)                | yes      |
+| key      | translation key or keys [TFunctionKeys](https://www.i18next.com/translation-function/essentials)                | Yes      |
 | options  | t function's options, see: [TOptions](https://www.i18next.com/translation-function/essentials#overview-options) | No       |
