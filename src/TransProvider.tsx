@@ -10,7 +10,7 @@ export interface TransProviderActions {
 const TransContext = createContext<[TFunction, TransProviderActions]>();
 
 function createTransContext(instance: i18n, options: InitOptions): [TFunction, TransProviderActions] {
-    const [translate, setTranslate] = createSignal<TFunction>(i18next.t.bind(i18next));
+    const [translate, setTranslate] = createSignal<TFunction>(instance.t.bind(instance));
 
     instance.init(options, (_, t) => setTranslate(() => t));
 
@@ -20,8 +20,7 @@ function createTransContext(instance: i18n, options: InitOptions): [TFunction, T
     }
 
     function addResources(lng: string, ns: string, resources: any): i18n {
-        instance.addResources(lng, ns, resources);
-        return i18next;
+        return instance.addResources(lng, ns, resources);
     }
 
     return [

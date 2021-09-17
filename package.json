@@ -33,9 +33,17 @@
     "dist"
   ],
   "keywords": [
+    "i18n",
     "i18next",
+    "internationalization",
+    "intl",
+    "language",
+    "localization",
     "solid",
-    "solid-js"
+    "solid-js",
+    "solidjs",
+    "translate",
+    "translations"
   ],
   "license": "MIT",
   "main": "dist/index.js",
