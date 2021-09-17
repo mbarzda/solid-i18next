@@ -10,7 +10,7 @@ with `<TranProvider />` and `<Trans />` components.
     1. [Add Resources](#add-resources)
     1. [Change a Language](#change-a-language)
     1. [T Function](#t-function)
-    1. [i18next Modules](#i18next-modules)
+    1. [i18next Plugins and Utils](#i18next-plugins-and-utils)
     1. [i18next Instance](#i18next-instance)
 1. [Interpolation](#interpolation)
     1. [Pluralization](#pluralization)
@@ -133,23 +133,23 @@ const Component = () => {
 };
 ```
 
-### i18next Modules
+### i18next Plugins and Utils
 
-**i18next** has [many modules](https://www.i18next.com/overview/plugins-and-utils).
-They can be loaded with `use` method. There is need to have an `i18next` instance.
+**i18next** has [many plugins and utils](https://www.i18next.com/overview/plugins-and-utils).
+They can be loaded with `i18next.use` method. You need to have an `i18next` instance for that.
 
 There is possible to use default `i18next` instance or create a separate one.
 
-`<TransProvider />` initializes **i18next** (`i18next.init()`) under the hood, so you need to create an instance before the component initializes.
+`<TransProvider />` initializes **i18next** (`i18next.init()`) under the hood, so you need to create an instance before initialization of the component.
 
-Modules options and other **i18next** options must be provided with `options` property.
+Plugins options and other **i18next** options must be provided with `options` property.
 
 ```tsx
 import { TransProvider, Trans } from '@mbarzda/solid-i18next';
 import i18next from 'i18next';
 import HttpBackend from 'i18next-http-backend';
 
-// Use modules with default instance.
+// Use plugin with default instance.
 render(() => {
     i18next.use(HttpBackend);
 
@@ -164,7 +164,7 @@ render(() => {
     );
 });
 
-// Use modules with separate instance.
+// Use plugin with separate instance.
 // New instance must be provided to `TransProvider` with `instance` property.
 render(() => {
     const instance = i18next.createInstance();
@@ -255,27 +255,29 @@ const resources = {
 
 ## API
 
-`<TransProvider />`
+#### `<TransProvider />`
 
 | Property | Description                                                                                      | Required |
 | -------- | ------------------------------------------------------------------------------------------------ | -------- |
 | instance | i18next instance, see: [i18n](https://www.i18next.com/overview/api)                              | No       |
-| lng      | language, `options.lng` overrides it                                                             | No       |
+| lng      | default language, `options.lng` overrides it                                                     | No       |
 | options  | i18next init options, see: [InitOptions](https://www.i18next.com/overview/configuration-options) | No       |
 
-`useTransContext` function returns the array. The first item is `t` function, second - the list of actions: `[TFunction, TransProviderActions]`.
+#### `useTransContext`
+
+The function returns the array. The first item is `t` function, second - the list of actions: `[TFunction, TransProviderActions]`.
 
 `TransProviderActions`
 
-| Function       | Description                                                                    |
-| -------------- | ------------------------------------------------------------------------------ |
-| addResources   | adds translation resources                                                     |
-| changeLanguage | changes language and sets new t function                                       |
-| getI18next     | returns **i18next** instance, see [i18n](https://www.i18next.com/overview/api) |
+| Function                         | Description                                                                                       |
+| -------------------------------- | ------------------------------------------------------------------------------------------------- |
+| addResources(lng, ns, resources) | adds translation resources, see [addResources](https://www.i18next.com/overview/api#addresources) |
+| changeLanguage(lng)              | changes language and sets new t function                                                          |
+| getI18next                       | returns **i18next** instance, see [i18n](https://www.i18next.com/overview/api)                    |
 
-`<Trans />`
+#### `<Trans />`
 
-| Property | Description                                                                                                     | Required |
-| -------- | --------------------------------------------------------------------------------------------------------------- | -------- |
-| key      | translation key or keys [TFunctionKeys](https://www.i18next.com/translation-function/essentials)                | Yes      |
-| options  | t function's options, see: [TOptions](https://www.i18next.com/translation-function/essentials#overview-options) | No       |
+| Property | Description                                                                                                               | Required |
+| -------- | ------------------------------------------------------------------------------------------------------------------------- | -------- |
+| key      | translation key or keys [TFunctionKeys](https://www.i18next.com/translation-function/essentials)                          | Yes      |
+| options  | t function's options, see: [TOptions \| string](https://www.i18next.com/translation-function/essentials#overview-options) | No       |
