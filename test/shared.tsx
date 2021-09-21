@@ -30,6 +30,9 @@ export const resources_lt = {
         apples_0: '{{count}} obuolys',
         apples_1: '{{count}} obuoliai',
         apples_2: '{{count}} obuolių',
+        tree: {
+            greeting: messages.simple.lt,
+        },
     },
 };
 

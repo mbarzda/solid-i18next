@@ -19,8 +19,13 @@ function createTransContext(instance: i18n, options: InitOptions): [TFunction, T
         setTranslate(() => t);
     }
 
-    function addResources(lng: string, ns: string, resources: any): i18n {
-        return instance.addResources(lng, ns, resources);
+    function addResources(
+        lng: string,
+        ns: string,
+        resources: any,
+        bundleOptions: { deep?: boolean; overwrite?: boolean } = {}
+    ): i18n {
+        return instance.addResourceBundle(lng, ns, resources, bundleOptions.deep, bundleOptions.overwrite);
     }
 
     return [
