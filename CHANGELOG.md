@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.2
+
+-   Extended `addResources` to support `addResourcesBundle` options
+-   Fixed auto import issue with pointing to package's `types` directory instead root
+-   Only support i18next versions in range >=20 <21
+
 ## 1.0.1
 
 -   Removed default i18next instance in `createTransContext` and `addResources`
