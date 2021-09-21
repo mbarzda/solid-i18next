@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.0
+
+-   Added `i18next@21` as peer and development dependency
+
 ## 1.0.2
 
 -   Extended `addResources` to support `addResourcesBundle` options
