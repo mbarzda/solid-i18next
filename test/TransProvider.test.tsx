@@ -62,6 +62,9 @@ describe('TransProvider component', () => {
                 const [, actions] = useTransContext();
                 actions.addResources('lt', 'translation', resources_lt.translation);
                 expect(actions.getI18next().getResource('lt', 'translation', 'greeting')).toEqual(messages.simple.lt);
+                expect(actions.getI18next().getResource('lt', 'translation', 'tree.greeting')).toEqual(
+                    messages.simple.lt
+                );
                 return '';
             });
         });

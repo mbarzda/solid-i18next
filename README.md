@@ -269,11 +269,11 @@ The function returns the array. The first item is `t` function, second - the lis
 
 `TransProviderActions`
 
-| Function                         | Description                                                                                       |
-| -------------------------------- | ------------------------------------------------------------------------------------------------- |
-| addResources(lng, ns, resources) | adds translation resources, see [addResources](https://www.i18next.com/overview/api#addresources) |
-| changeLanguage(lng)              | changes language and sets new t function                                                          |
-| getI18next                       | returns **i18next** instance, see [i18n](https://www.i18next.com/overview/api)                    |
+| Function                                                                                                           | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| addResources(<br/>lng, <br/>ns, <br/>resources, <br/>bundleOptions?: { deep?: boolean; overwrite?: boolean }<br/>) | adds translation resources, see [addResourcesBundle](https://www.i18next.com/overview/api#addresourcebundle) |
+| changeLanguage(lng)                                                                                                | changes language and sets new t function                                                                     |
+| getI18next                                                                                                         | returns **i18next** instance, see [i18n](https://www.i18next.com/overview/api)                               |
 
 #### `<Trans />`
 
