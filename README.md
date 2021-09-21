@@ -21,7 +21,7 @@ with `<TransProvider />` and `<Trans />` components.
 Installation:
 
 ```sh
-npm install @mbarzda/solid-i18next i18next@20 --save
+npm install @mbarzda/solid-i18next i18next --save
 ```
 
 ### Simple Example
