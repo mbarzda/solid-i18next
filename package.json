@@ -50,8 +50,8 @@
   "module": "dist/index.mjs",
   "name": "@mbarzda/solid-i18next",
   "peerDependencies": {
-    "i18next": "~20.6.1",
-    "solid-js": "~1.0.0"
+    "i18next": "^20.x",
+    "solid-js": "^1.x"
   },
   "repository": "github:mbarzda/solid-i18next",
   "scripts": {
@@ -60,6 +60,6 @@
     "test": "jest"
   },
   "type": "module",
-  "types": "./dist/types",
+  "types": "./dist/types/index.d.ts",
   "version": "1.0.1"
 }
