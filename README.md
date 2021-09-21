@@ -21,7 +21,7 @@ with `<TransProvider />` and `<Trans />` components.
 Installation:
 
 ```sh
-npm install @mbarzda/solid-i18next i18next --save
+npm install @mbarzda/solid-i18next i18next@20 --save
 ```
 
 ### Simple Example
@@ -265,15 +265,17 @@ const resources = {
 
 #### `useTransContext`
 
-The function returns the array. The first item is `t` function, second - the list of actions: `[TFunction, TransProviderActions]`.
+`useTransContext` function returns `TransContext` as array: `[TFunction, TransProviderActions]`.
+
+The first item is `t` function, second - the list of actions, which are listed below.
 
 `TransProviderActions`
 
-| Function                                                                                                           | Description                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| addResources(<br/>lng, <br/>ns, <br/>resources, <br/>bundleOptions?: { deep?: boolean; overwrite?: boolean }<br/>) | adds translation resources, see [addResourcesBundle](https://www.i18next.com/overview/api#addresourcebundle) |
-| changeLanguage(lng)                                                                                                | changes language and sets new t function                                                                     |
-| getI18next                                                                                                         | returns **i18next** instance, see [i18n](https://www.i18next.com/overview/api)                               |
+| Function                                                                                         | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| addResources(<br/>lng, <br/>ns, <br/>resources, <br/>bundleOptions?: { deep?; overwrite? }<br/>) | adds translation resources, see [addResourcesBundle](https://www.i18next.com/overview/api#addresourcebundle) |
+| changeLanguage(lng)                                                                              | changes language and sets new t function                                                                     |
+| getI18next                                                                                       | returns **i18next** instance, see [i18n](https://www.i18next.com/overview/api)                               |
 
 #### `<Trans />`
 
