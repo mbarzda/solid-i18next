@@ -1,7 +1,7 @@
 # i18next for Solid
 
 The purpose of this library is to provide ability to support [i18next](https://i18next.com/) library in Solid applications
-with `<TranProvider />` and `<Trans />` components.
+with `<TransProvider />` and `<Trans />` components.
 
 ## Table of Contents
 
