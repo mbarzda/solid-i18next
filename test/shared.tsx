@@ -27,9 +27,9 @@ export const resources_lt = {
         greeting: messages.simple.lt,
         greeting_interpolation: messages.interpolation.lt,
         greeting_custom_interpolation: messages.custom_interpolation.lt,
-        apples_0: '{{count}} obuolys',
-        apples_1: '{{count}} obuoliai',
-        apples_2: '{{count}} obuolių',
+        apples_one: '{{count}} obuolys',
+        apples_few: '{{count}} obuoliai',
+        apples_other: '{{count}} obuolių',
         tree: {
             greeting: messages.simple.lt,
         },
@@ -45,7 +45,7 @@ export const resources_pl = {
 };
 
 export const resources_en = {
-    translation: { apples: '{{count}} apple', apples_plural: '{{count}} apples' },
+    translation: { apples_one: '{{count}} apple', apples_other: '{{count}} apples' },
 };
 
 export const result = {
