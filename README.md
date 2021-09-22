@@ -21,7 +21,7 @@ with `<TransProvider />` and `<Trans />` components.
 Installation:
 
 ```sh
-npm install @mbarzda/solid-i18next i18next@20 --save
+npm install @mbarzda/solid-i18next i18next --save
 ```
 
 ### Simple Example
@@ -227,11 +227,15 @@ const interpolation = { prefix: '##', suffix: '##' };
 
 ### Pluralization
 
-**i18next** provides default [pluralization feature](https://www.i18next.com/translation-function/plurals),
-but that may be inconsistent through different languages
-and you would prefer something like [ICU format](https://unicode-org.github.io/icu/userguide/format_parse/messages/).
+**i18next** provides default [pluralization feature](https://www.i18next.com/translation-function/plurals). Note, that pluralization keys [were changed](https://www.i18next.com/misc/migration-guide#json-format-v4-pluralization) since `i18next@21`.
 
-For that case I would recommend [i18next-icu](https://github.com/i18next/i18next-icu) plugin. Note, that default interpolation would change.
+Translation keys may be inconsistent through different languages and you would prefer something like [ICU format](https://unicode-org.github.io/icu/userguide/format_parse/messages/).
+
+For that case I recommend [i18next-icu](https://github.com/i18next/i18next-icu) plugin. Note, that default interpolation would change.
+
+```sh
+npm i i18next-icu
+```
 
 ```tsx
 import i18next from 'i18next';
@@ -242,7 +246,7 @@ instance.use(ICU);
 
 const resources = {
     lt: {
-        photos: 'Tu { numPhotos, select, 0 {neturi nuotraukų} other { turi { numPhotos, plural, one {# nuotrauką} few {# nuotraukas} other {# nuotraukų} }}}.'
+        photos: 'Tu { numPhotos, plural, 0 {neturi nuotraukų} other {turi { numPhotos, plural, one {# nuotrauką} few {# nuotraukas} other {# nuotraukų} }} }.'
     }
 }
 
