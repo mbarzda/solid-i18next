@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.0
+
+-   Added `i18next@21` as peer and dev dependency. It changed default [pluralization feature](https://www.i18next.com/misc/migration-guide#json-format-v4-pluralization)
+    and you may need set `compatibilityJSON` option for `<TransProvider />`.
+
 ## 1.0.2
 
 -   Extended `addResources` to support `addResourcesBundle` options
