@@ -227,7 +227,7 @@ const interpolation = { prefix: '##', suffix: '##' };
 
 ### Pluralization
 
-**i18next** provides default [pluralization feature](https://www.i18next.com/translation-function/plurals). Note, that interpolation keys were changed since `i18next@21`.
+**i18next** provides default [pluralization feature](https://www.i18next.com/translation-function/plurals). Note, that pluralization keys [were changed](https://www.i18next.com/misc/migration-guide#json-format-v4-pluralization) since `i18next@21`.
 
 Translation keys may be inconsistent through different languages and you would prefer something like [ICU format](https://unicode-org.github.io/icu/userguide/format_parse/messages/).
 
