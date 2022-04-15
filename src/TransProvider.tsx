@@ -10,9 +10,10 @@ export interface TransProviderActions {
 const TransContext = createContext<[TFunction, TransProviderActions]>();
 
 function createTransContext(instance: i18n, options: InitOptions): [TFunction, TransProviderActions] {
-    const [translate, setTranslate] = createSignal<TFunction>(instance.t.bind(instance));
+    const [translate, setTranslate] = createSignal<TFunction>(() => null);
 
-    instance.init(options, (_, t) => setTranslate(() => t));
+    instance.on('loaded', () => setTranslate(() => instance.t));
+    instance.init(options, (_, t) => !!options.resources && setTranslate(() => t));
 
     async function changeLanguage(lng: string) {
         const t = await instance.changeLanguage(lng);

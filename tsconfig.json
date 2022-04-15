@@ -2,7 +2,7 @@
     "compilerOptions": {
         "allowSyntheticDefaultImports": true,
         "declaration": true,
-        "declarationDir": "./types",
+        "declarationDir": "./dist/types",
         "esModuleInterop": true,
         "jsx": "preserve",
         "jsxImportSource": "solid-js",
@@ -10,7 +10,9 @@
         "moduleResolution": "node",
         "outDir": "./dist",
         "resolveJsonModule": true,
-        "target": "esnext"
-    },
-    "include": ["src"]
+        "target": "esnext",
+        "paths": {
+            "@mbarzda/solid-i18next": ["./src/index.ts"]
+        }
+    }
 }
