@@ -31,6 +31,7 @@ describe('TransProvider component', () => {
             const Comp = () => {
                 const [, { getI18next }] = useTransContext();
                 expect(getI18next().store).toStrictEqual(i18next.store);
+                return <></>;
             };
             renderApp(() => <TransProvider children={<Comp />} />);
         });
@@ -40,6 +41,7 @@ describe('TransProvider component', () => {
             const Comp = () => {
                 const [, { getI18next }] = useTransContext();
                 expect(getI18next().store).toStrictEqual(instance.store);
+                return <></>;
             };
             renderApp(() => {
                 instance = i18next.createInstance();

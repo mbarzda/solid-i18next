@@ -12,7 +12,8 @@
         "resolveJsonModule": true,
         "target": "esnext",
         "paths": {
-            "@mbarzda/solid-i18next": ["./src/index.ts"]
+            "@mbarzda/solid-i18next": ["./src/index.ts"],
+            "$/*": ["./examples/*"]
         }
     }
 }
