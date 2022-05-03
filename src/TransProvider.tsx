@@ -10,7 +10,7 @@ export interface TransProviderActions {
 const TransContext = createContext<[TFunction, TransProviderActions]>();
 
 function createTransContext(instance: i18n, options: InitOptions): [TFunction, TransProviderActions] {
-    const [translate, setTranslate] = createSignal<TFunction>(() => null);
+    const [translate, setTranslate] = createSignal<TFunction>(instance.t);
 
     instance.on('loaded', () => setTranslate(() => instance.t));
     instance.init(options, (_, t) => setTranslate(() => t));

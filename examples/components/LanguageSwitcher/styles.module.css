@@ -7,6 +7,7 @@
     border: 1px solid transparent;
     border-top-color: var(--color-accent);
     border-bottom-color: var(--color-accent);
+    border-right-color: var(--color-accent);
     cursor: pointer;
     padding: 4px 8px;
     font-size: 18px;
@@ -20,7 +21,6 @@
 }
 
 .button:last-of-type {
-    border-right-color: var(--color-accent);
     border-top-right-radius: var(--language-switcher-radius);
     border-bottom-right-radius: var(--language-switcher-radius);
 }

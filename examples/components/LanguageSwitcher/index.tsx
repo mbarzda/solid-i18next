@@ -2,13 +2,15 @@ import { useTransContext } from '@mbarzda/solid-i18next';
 import { Component, createSignal, Index } from 'solid-js';
 import { button, buttonActive } from './styles.module.css';
 
-export const LanguageSwitcher: Component = () => {
-    const languages = [
+export const LanguageSwitcher: Component<{ languages?: { code: string; title: string }[]; active?: string }> = (
+    props
+) => {
+    const languages = props.languages ?? [
         { code: 'en', title: 'English' },
         { code: 'lt', title: 'Lietuvių' },
     ];
     const [, { changeLanguage }] = useTransContext();
-    const [lang, setLang] = createSignal('en');
+    const [lang, setLang] = createSignal(props.active ?? 'en');
 
     const onClick = async (code: string) => {
         await changeLanguage(code);
