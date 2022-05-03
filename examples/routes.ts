@@ -2,8 +2,8 @@ import { RouteDefinition } from 'solid-app-router';
 import { HttpBackendPage, SimplePage } from './pages';
 
 export enum Route {
-    HttpBackend = 'http-backend',
-    Simple = 'simple',
+    HttpBackend = 'solid-i18next/http-backend',
+    Simple = 'solid-i18next/simple',
 }
 
 export const routes: RouteDefinition[] = [
