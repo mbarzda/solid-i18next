@@ -1,0 +1,24 @@
+.translated {
+    background-color: transparent;
+    padding: 12px 6px;
+    margin-left: -6px;
+    transition: background-color 400ms;
+    border: 1px solid var(--color-accent-opacity-50);
+}
+
+.translatedSup {
+    float: right;
+}
+
+.changed {
+    background-color: var(--color-accent-opacity-50);
+}
+
+.code {
+    padding: 12px 6px;
+    margin-left: -6px;
+    margin-bottom: 16px;
+    background-color: #fafafa;
+    border: 1px solid #aaa;
+    display: block;
+}

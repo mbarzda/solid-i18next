@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.1.3
+
+-   Fix warning throw, when translation are not loaded with HttpBackend #13.
+-   Add examples application.
+-   Update dependencies.
+
+## 1.1.2
+
+-   Update dependencies.
+
+## 1.1.1
+
+-   Update dependencies.
+
 ## 1.1.0
 
 -   Added `i18next@21` as peer and dev dependency. It changed default [pluralization feature](https://www.i18next.com/misc/migration-guide#json-format-v4-pluralization)

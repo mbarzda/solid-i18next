@@ -10,8 +10,9 @@ export interface TransProviderActions {
 const TransContext = createContext<[TFunction, TransProviderActions]>();
 
 function createTransContext(instance: i18n, options: InitOptions): [TFunction, TransProviderActions] {
-    const [translate, setTranslate] = createSignal<TFunction>(instance.t.bind(instance));
+    const [translate, setTranslate] = createSignal<TFunction>(instance.t);
 
+    instance.on('loaded', () => setTranslate(() => instance.t));
     instance.init(options, (_, t) => setTranslate(() => t));
 
     async function changeLanguage(lng: string) {
@@ -47,10 +48,7 @@ export const TransProvider = (
 ): JSXElement => {
     return (
         <TransContext.Provider
-            value={createTransContext(
-                props.instance || i18next,
-                Object.assign({ lng: props.lng, resources: {} }, props.options)
-            )}
+            value={createTransContext(props.instance || i18next, Object.assign({ lng: props.lng }, props.options))}
             children={props.children}
         />
     );
