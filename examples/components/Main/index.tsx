@@ -5,34 +5,29 @@ import { Route, routes } from '$/routes';
 import { navigationSignal } from '$/signals';
 
 export const Main: Component = () => {
-    const Routes = useRoutes(routes);
-    const [isOpened, setOpened] = navigationSignal;
+  const Routes = useRoutes(routes);
+  const [isOpened, setOpened] = navigationSignal;
 
-    const links = [
-        { href: Route.Simple, title: 'Simple' },
-        { href: Route.HttpBackend, title: 'HttpBackend' },
-    ];
-    document.addEventListener('keydown', (event: KeyboardEvent) => {
-        if (event.key === 'Escape') setOpened(false);
-    });
+  const links = [
+    { href: Route.Simple, title: 'Simple' },
+    { href: Route.HttpBackend, title: 'HttpBackend' },
+  ];
+  document.addEventListener('keydown', (event: KeyboardEvent) => {
+    if (event.key === 'Escape') setOpened(false);
+  });
 
-    return (
-        <>
-            <nav class={navigation} classList={{ [opened]: isOpened() }}>
-                <Index each={links}>
-                    {(item) => (
-                        <NavLink
-                            class={link}
-                            activeClass={linkActive}
-                            href={item().href}
-                            onclick={() => setOpened(false)}
-                        >
-                            {item().title}
-                        </NavLink>
-                    )}
-                </Index>
-            </nav>
-            <section class={main} children={Routes}></section>
-        </>
-    );
+  return (
+    <>
+      <nav class={navigation} classList={{ [opened]: isOpened() }}>
+        <Index each={links}>
+          {(item) => (
+            <NavLink class={link} activeClass={linkActive} href={item().href} onclick={() => setOpened(false)}>
+              {item().title}
+            </NavLink>
+          )}
+        </Index>
+      </nav>
+      <section class={main} children={Routes}></section>
+    </>
+  );
 };

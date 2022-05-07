@@ -1,30 +1,30 @@
 :root {
-    --language-switcher-radius: 5px;
+  --language-switcher-radius: 5px;
 }
 
 .button {
-    background: transparent;
-    border: 1px solid transparent;
-    border-top-color: var(--color-accent);
-    border-bottom-color: var(--color-accent);
-    border-right-color: var(--color-accent);
-    cursor: pointer;
-    padding: 4px 8px;
-    font-size: 18px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-top-color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+  border-right-color: var(--color-accent);
+  cursor: pointer;
+  padding: 4px 8px;
+  font-size: 18px;
 }
 
 .button:first-of-type {
-    margin-left: 4px;
-    border-left-color: var(--color-accent);
-    border-top-left-radius: var(--language-switcher-radius);
-    border-bottom-left-radius: var(--language-switcher-radius);
+  margin-left: 4px;
+  border-left-color: var(--color-accent);
+  border-top-left-radius: var(--language-switcher-radius);
+  border-bottom-left-radius: var(--language-switcher-radius);
 }
 
 .button:last-of-type {
-    border-top-right-radius: var(--language-switcher-radius);
-    border-bottom-right-radius: var(--language-switcher-radius);
+  border-top-right-radius: var(--language-switcher-radius);
+  border-bottom-right-radius: var(--language-switcher-radius);
 }
 
 .buttonActive {
-    background: var(--color-accent);
+  background: var(--color-accent);
 }

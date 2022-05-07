@@ -5,12 +5,12 @@ import { Header, Main } from './components';
 import { app } from './styles.module.css';
 
 render(() => {
-    return (
-        <Router>
-            <div class={app}>
-                <Header />
-                <Main />
-            </div>
-        </Router>
-    );
+  return (
+    <Router>
+      <div class={app}>
+        <Header />
+        <Main />
+      </div>
+    </Router>
+  );
 }, document.body);

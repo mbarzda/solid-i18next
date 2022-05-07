@@ -1,61 +1,61 @@
 .header {
-    color: var(--color-accent);
-    grid-area: header;
+  color: var(--color-accent);
+  grid-area: header;
 }
 
 .header::after {
-    content: '';
-    display: block;
-    height: 1px;
-    background-image: linear-gradient(-90deg, transparent, var(--color-accent));
+  content: '';
+  display: block;
+  height: 1px;
+  background-image: linear-gradient(-90deg, transparent, var(--color-accent));
 }
 
 .heading {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-size: 1rem;
-    text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 1rem;
+  text-align: center;
 }
 
 .menu {
-    background: transparent;
-    font-weight: 700;
-    font-family: monospace;
-    display: block;
-    width: 2rem;
-    height: 2rem;
-    position: absolute;
-    top: 10px;
-    border: 0;
-    color: var(--color-accent);
+  background: transparent;
+  font-weight: 700;
+  font-family: monospace;
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  top: 10px;
+  border: 0;
+  color: var(--color-accent);
 }
 
 .menu::before {
-    content: '≡';
-    font-size: 3rem;
-    position: absolute;
-    top: -22px;
-    left: 1px;
+  content: '≡';
+  font-size: 3rem;
+  position: absolute;
+  top: -22px;
+  left: 1px;
 }
 
 .opened::before {
-    content: '×';
-    top: -18px;
+  content: '×';
+  top: -18px;
 }
 
 .github {
-    float: right;
+  float: right;
 }
 
 @media screen and (min-width: 801px) {
-    .heading {
-        font-size: 1.5rem;
-        text-align: left;
-    }
+  .heading {
+    font-size: 1.5rem;
+    text-align: left;
+  }
 
-    .menu {
-        display: none;
-    }
+  .menu {
+    display: none;
+  }
 }

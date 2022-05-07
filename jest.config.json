@@ -1,15 +1,22 @@
 {
-    "projects": [
-        {
-            "displayName": "browser",
-            "preset": "solid-jest/preset/browser",
-            "testMatch": ["<rootDir>/test/**/*.test.*"]
-        },
-        {
-            "displayName": "node",
-            "preset": "solid-jest/preset/node",
-            "testEnvironment": "<rootDir>/test/node.ts",
-            "testMatch": ["<rootDir>/test/**/*.test.*"]
-        }
-    ]
+  "projects": [
+    {
+      "displayName": "browser",
+      "preset": "solid-jest/preset/browser",
+      "testMatch": [
+        "<rootDir>/test/**/*.test.*"
+      ]
+    },
+    {
+      "displayName": "node",
+      "preset": "solid-jest/preset/node",
+      "testEnvironment": "<rootDir>/test/node.ts",
+      "testMatch": [
+        "<rootDir>/test/**/*.test.*"
+      ]
+    }
+  ],
+  "coverageReporters": [
+    "clover"
+  ]
 }

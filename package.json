@@ -7,17 +7,17 @@
     "@rollup/plugin-typescript": "^8.3.2",
     "@types/jest": "^27.5.0",
     "babel-preset-solid": "^1.3.17",
-    "i18next": "^21.6.16",
+    "i18next": "^21.7.1",
     "i18next-http-backend": "^1.4.0",
-    "jest": "^28.0.3",
-    "jest-environment-jsdom": "^28.0.2",
+    "jest": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.0",
     "rimraf": "^3.0.2",
     "solid-app-router": "^0.3.2",
     "solid-jest": "^0.2.0",
     "solid-js": "^1.3.17",
     "solid-testing-library": "^0.3.0",
     "typescript": "^4.6.4",
-    "vite": "^2.9.7",
+    "vite": "^2.9.8",
     "vite-plugin-solid": "^2.2.6"
   },
   "exports": {
@@ -60,7 +60,8 @@
     "prebuild:dev": "rimraf ./docs",
     "build:dev": "rimraf ./docs && vite build --config vite.dev.config.js && cp -r ./examples/locales ./docs/locales && cp -r ./examples/favicon.ico ./docs/favicon.ico",
     "dev": "vite --config vite.dev.config.js",
-    "test": "jest"
+    "test": "jest --coverage",
+    "test:dev": "jest"
   },
   "type": "module",
   "types": "./dist/types/index.d.ts",
