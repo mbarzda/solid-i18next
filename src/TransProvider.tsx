@@ -48,7 +48,7 @@ export const TransProvider = (
 ): JSXElement => {
   return (
     <TransContext.Provider
-      value={createTransContext(props.instance ?? i18next, { lng: props.lng, ...props.options })}
+      value={createTransContext(props.instance || i18next, { lng: props.lng, ...props.options })}
       children={props.children}
     />
   );

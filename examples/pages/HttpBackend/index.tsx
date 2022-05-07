@@ -5,7 +5,7 @@ import HttpBackend from 'i18next-http-backend';
 import { Example, LanguageSwitcher } from '$/components';
 import { HttpBackendLoadTranslations } from './LoadTranslations';
 
-export const HttpBackendPage: Component = () => {
+const HttpBackendPage: Component = () => {
   const instance = i18next.createInstance();
   instance.use(HttpBackend);
 
@@ -71,3 +71,4 @@ export const HttpBackendPage: Component = () => {
     </>
   );
 };
+export default HttpBackendPage;

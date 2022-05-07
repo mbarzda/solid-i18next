@@ -1,7 +1,4 @@
-import { i18n } from 'i18next';
-import { JSXElement } from 'solid-js';
-import { renderToString } from 'solid-js/web';
-import { render } from 'solid-testing-library';
+import { BackendModule, i18n } from 'i18next';
 import { TransProvider, useTransContext } from '../src';
 import { messages, renderComponent, resources_lt } from './shared';
 
@@ -14,26 +11,20 @@ describe('TransProvider component', () => {
   });
 
   describe('Instance must be the same', () => {
-    function renderApp(fn: () => JSXElement) {
-      if (global.isNodeEnv) {
-        renderToString(fn);
-      } else {
-        render(fn);
-      }
-    }
-
     let i18next: i18n;
     beforeEach(async () => {
       i18next = (await import('i18next')).default;
     });
 
-    test('Default', () => {
+    test('Default instance', () => {
       const Comp = () => {
         const [, { getI18next }] = useTransContext();
         expect(getI18next().store).toStrictEqual(i18next.store);
-        return <></>;
+        return '';
       };
-      renderApp(() => <TransProvider children={<Comp />} />);
+      renderComponent(() => {
+        return <TransProvider children={<Comp />} />;
+      });
     });
 
     test('New instance', () => {
@@ -41,9 +32,9 @@ describe('TransProvider component', () => {
       const Comp = () => {
         const [, { getI18next }] = useTransContext();
         expect(getI18next().store).toStrictEqual(instance.store);
-        return <></>;
+        return '';
       };
-      renderApp(() => {
+      renderComponent(() => {
         instance = i18next.createInstance();
         return <TransProvider instance={instance} children={<Comp />} />;
       });
@@ -78,6 +69,42 @@ describe('TransProvider component', () => {
         expect(actions.getI18next().language).toEqual('lt');
         return '';
       });
+    });
+  });
+
+  describe('BackendModule', () => {
+    let i18next: i18n;
+    beforeEach(async () => {
+      i18next = (await import('i18next')).default.createInstance();
+    });
+
+    test('Initial load', () => {
+      const Comp = () => {
+        const [t] = useTransContext();
+        expect(t('greeting')).toEqual(null);
+        return '';
+      };
+      renderComponent(() => <TransProvider instance={i18next} children={Comp} />);
+    });
+
+    test('Emit', () => {
+      const spy = jest.spyOn(i18next, 'emit');
+      i18next.use({
+        init() {
+          i18next.emit('loaded');
+        },
+        read(_lng, _ns, cb) {
+          cb(null, { greeting: messages.simple.en });
+        },
+        type: 'backend',
+      } as BackendModule);
+      const Comp = () => {
+        const [t] = useTransContext();
+        expect(spy).toBeCalled();
+        expect(t('greeting')).toEqual('greeting');
+        return '';
+      };
+      renderComponent(() => <TransProvider instance={i18next} children={Comp} />);
     });
   });
 });

@@ -4,7 +4,7 @@ import { Trans, TransProvider } from '@mbarzda/solid-i18next';
 import i18next, { InitOptions } from 'i18next';
 import { Component } from 'solid-js';
 
-export const SimplePage: Component = () => {
+const SimplePage: Component = () => {
   const options: InitOptions = {
     debug: true,
     lng: 'en',
@@ -22,3 +22,4 @@ export const SimplePage: Component = () => {
     </TransProvider>
   );
 };
+export default SimplePage;
