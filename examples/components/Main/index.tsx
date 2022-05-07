@@ -1,38 +1,57 @@
-import { Component, Index } from 'solid-js';
-import { NavLink, useRoutes } from 'solid-app-router';
+import { Accessor, Component, createEffect, createMemo, createSignal, Index, lazy } from 'solid-js';
 import { link, linkActive, main, navigation, opened } from './styles.module.css';
-import { Route, routes } from '$/routes';
+
 import { navigationSignal } from '$/signals';
 
 export const Main: Component = () => {
-    const Routes = useRoutes(routes);
-    const [isOpened, setOpened] = navigationSignal;
+  const [isOpened, setOpened] = navigationSignal;
+  const [active, setActive] = createSignal('Simple');
+  const [page, setPage] = createSignal();
 
-    const links = [
-        { href: Route.Simple, title: 'Simple' },
-        { href: Route.HttpBackend, title: 'HttpBackend' },
-    ];
-    document.addEventListener('keydown', (event: KeyboardEvent) => {
-        if (event.key === 'Escape') setOpened(false);
-    });
+  const links = [
+    { path: 'Simple', title: 'Simple' },
+    { path: 'HttpBackend', title: 'HttpBackend' },
+  ];
+  document.addEventListener('keydown', (event: KeyboardEvent) => {
+    if (event.key === 'Escape') setOpened(false);
+  });
 
-    return (
-        <>
-            <nav class={navigation} classList={{ [opened]: isOpened() }}>
-                <Index each={links}>
-                    {(item) => (
-                        <NavLink
-                            class={link}
-                            activeClass={linkActive}
-                            href={item().href}
-                            onclick={() => setOpened(false)}
-                        >
-                            {item().title}
-                        </NavLink>
-                    )}
-                </Index>
-            </nav>
-            <section class={main} children={Routes}></section>
-        </>
-    );
+  createEffect(() => {
+    let page;
+    switch (active()) {
+      case 'Simple':
+        page = lazy(() => import('../../pages/Simple'));
+        break;
+      case 'HttpBackend':
+        page = lazy(() => import('../../pages/HttpBackend'));
+        break;
+    }
+    setPage(page);
+  });
+
+  function onClick(item: Accessor<typeof links[0]>, event: MouseEvent) {
+    event.stopPropagation();
+    event.preventDefault();
+    setActive(item().path);
+  }
+
+  return (
+    <>
+      <nav class={navigation} classList={{ [opened]: isOpened() }}>
+        <Index each={links}>
+          {(item) => (
+            <a
+              href="#"
+              class={link}
+              classList={{ [linkActive]: active() === item().path }}
+              onClick={(event) => onClick(item, event)}
+            >
+              {item().title}
+            </a>
+          )}
+        </Index>
+      </nav>
+      <section class={main} children={page() as any}></section>
+    </>
+  );
 };

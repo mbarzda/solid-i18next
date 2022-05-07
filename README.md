@@ -6,14 +6,14 @@ with `<TransProvider />` and `<Trans />` components.
 ## Table of Contents
 
 1. [Usage](#usage)
-    1. [Simple Example](#simple-example)
-    1. [Add Resources](#add-resources)
-    1. [Change a Language](#change-a-language)
-    1. [T Function](#t-function)
-    1. [i18next Plugins and Utils](#i18next-plugins-and-utils)
-    1. [i18next Instance](#i18next-instance)
+   1. [Simple Example](#simple-example)
+   1. [Add Resources](#add-resources)
+   1. [Change a Language](#change-a-language)
+   1. [T Function](#t-function)
+   1. [i18next Plugins and Utils](#i18next-plugins-and-utils)
+   1. [i18next Instance](#i18next-instance)
 1. [Interpolation](#interpolation)
-    1. [Pluralization](#pluralization)
+   1. [Pluralization](#pluralization)
 1. [API](#api)
 
 ## Usage
@@ -38,19 +38,19 @@ import { TransProvider, Trans } from '@mbarzda/solid-i18next';
 const { TransProvider, Trans } = require('@mbarzda/solid-i18next');
 
 render(() => (
-    <TransProvider>
-        <App>
-            <Trans key="greeting" />
-            {/* or */}
-            <Trans key="greeting">Hello!</Trans>
-            {/* or */}
-            <Trans key="greeting" options={{ defaultValue: 'Hello!' }} />
-            {/* or */}
-            <Trans key="greeting" options="Hello!" />
-            {/* or */}
-            <Trans key="greeting" children="Hello!" />
-        </App>
-    </TransProvider>
+  <TransProvider>
+    <App>
+      <Trans key="greeting" />
+      {/* or */}
+      <Trans key="greeting">Hello!</Trans>
+      {/* or */}
+      <Trans key="greeting" options={{ defaultValue: 'Hello!' }} />
+      {/* or */}
+      <Trans key="greeting" options="Hello!" />
+      {/* or */}
+      <Trans key="greeting" children="Hello!" />
+    </App>
+  </TransProvider>
 ));
 ```
 
@@ -97,18 +97,18 @@ To change a language you need to use `TransContext` and call `changeLanguage`.
 import { useTransContext } from '@mbarzda/solid-18next';
 
 const Component = () => {
-    const [, { changeLanguage }] = useTransContext();
+  const [, { changeLanguage }] = useTransContext();
 
-    return (
-        <article>
-            <button type="button" onClick={() => changeLanguage('en')}>
-                English
-            </button>
-            <button type="button" onClick={() => changeLanguage('lt')}>
-                Lietuvių
-            </button>
-        </article>
-    );
+  return (
+    <article>
+      <button type="button" onClick={() => changeLanguage('en')}>
+        English
+      </button>
+      <button type="button" onClick={() => changeLanguage('lt')}>
+        Lietuvių
+      </button>
+    </article>
+  );
 };
 ```
 
@@ -119,17 +119,17 @@ const Component = () => {
 
 ```tsx
 const Component = () => {
-    const [t] = useTransContext();
-    const messages = {
-        get greeting() {
-            return t('greeting', 'Hello!');
-        },
-        get bye() {
-            return t('bye', 'Bye!');
-        },
-    };
+  const [t] = useTransContext();
+  const messages = {
+    get greeting() {
+      return t('greeting', 'Hello!');
+    },
+    get bye() {
+      return t('bye', 'Bye!');
+    },
+  };
 
-    return <>{isLogin() ? messages.greeting : messages.bye}</>;
+  return <>{isLogin() ? messages.greeting : messages.bye}</>;
 };
 ```
 
@@ -151,34 +151,34 @@ import HttpBackend from 'i18next-http-backend';
 
 // Use plugin with default instance.
 render(() => {
-    i18next.use(HttpBackend);
+  i18next.use(HttpBackend);
 
-    const backend = { loadPath: '/locales/{{lng}}/{{ns}}.json' };
+  const backend = { loadPath: '/locales/{{lng}}/{{ns}}.json' };
 
-    return (
-        <TransProvider options={{ backend }}>
-            <App>
-                <Trans key="greeting">Hello!</Trans>
-            </App>
-        </TransProvider>
-    );
+  return (
+    <TransProvider options={{ backend }}>
+      <App>
+        <Trans key="greeting">Hello!</Trans>
+      </App>
+    </TransProvider>
+  );
 });
 
 // Use plugin with separate instance.
 // New instance must be provided to `TransProvider` with `instance` property.
 render(() => {
-    const instance = i18next.createInstance();
-    instance.use(HttpBackend);
+  const instance = i18next.createInstance();
+  instance.use(HttpBackend);
 
-    const backend = { loadPath: '/locales/{{lng}}/{{ns}}.json' };
+  const backend = { loadPath: '/locales/{{lng}}/{{ns}}.json' };
 
-    return (
-        <TransProvider instance={instance} options={{ backend }}>
-            <App>
-                <Trans key="greeting">Hello!</Trans>
-            </App>
-        </TransProvider>
-    );
+  return (
+    <TransProvider instance={instance} options={{ backend }}>
+      <App>
+        <Trans key="greeting">Hello!</Trans>
+      </App>
+    </TransProvider>
+  );
 });
 ```
 
@@ -208,7 +208,7 @@ through `options` property of `<Trans />` component.
 
 ```tsx
 <Trans key="greeting" options={{ name: 'John Doe' }}>
-    {'Hello {{name}}!'}
+  {'Hello {{name}}!'}
 </Trans>
 ```
 
@@ -219,9 +219,9 @@ const resources = { lt: { greeting: 'Labas, ##name##!' } };
 const interpolation = { prefix: '##', suffix: '##' };
 
 <TransProvider options={{ interpolation, resources }}>
-    <Trans key="greeting" options={{ name: 'John Doe' }}>
-        Hello ##name##!
-    </Trans>
+  <Trans key="greeting" options={{ name: 'John Doe' }}>
+    Hello ##name##!
+  </Trans>
 </TransProvider>;
 ```
 
