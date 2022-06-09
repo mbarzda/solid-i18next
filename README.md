@@ -1,6 +1,8 @@
 # i18next for Solid
 
+![npm (scoped)](https://img.shields.io/npm/v/@mbarzda/solid-i18next?color=seagreen)
 [![codecov](https://codecov.io/gh/mbarzda/solid-i18next/branch/main/graph/badge.svg?token=RGWEZWK8T2)](https://codecov.io/gh/mbarzda/solid-i18next)
+[![npm bundle size](https://img.shields.io/bundlephobia/minzip/@mbarzda/solid-i18next)](https://bundlephobia.com/package/@mbarzda/solid-i18next)
 
 The purpose of this library is to provide ability to support [i18next](https://www.i18next.com/) library in Solid applications
 with `<TransProvider />` and `<Trans />` components.
