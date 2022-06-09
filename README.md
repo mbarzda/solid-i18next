@@ -19,6 +19,8 @@ with `<TransProvider />` and `<Trans />` components.
 1. [Interpolation](#interpolation)
    1. [Pluralization](#pluralization)
 1. [API](#api)
+   1. [Components](#components)
+   1. [Utilities](#utilities)
 
 ## Usage
 
