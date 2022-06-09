@@ -261,6 +261,8 @@ const resources = {
 
 ## API
 
+### Components
+
 #### `<TransProvider />`
 
 | Property | Description                                                                                      | Required |
@@ -268,6 +270,15 @@ const resources = {
 | instance | i18next instance, see: [i18n](https://www.i18next.com/overview/api)                              | No       |
 | lng      | default language, `options.lng` overrides it                                                     | No       |
 | options  | i18next init options, see: [InitOptions](https://www.i18next.com/overview/configuration-options) | No       |
+
+#### `<Trans />`
+
+| Property | Description                                                                                                               | Required |
+| -------- | ------------------------------------------------------------------------------------------------------------------------- | -------- |
+| key      | translation key or keys [TFunctionKeys](https://www.i18next.com/translation-function/essentials)                          | Yes      |
+| options  | t function's options, see: [TOptions \| string](https://www.i18next.com/translation-function/essentials#overview-options) | No       |
+
+### Utilities
 
 #### `useTransContext`
 
@@ -277,15 +288,8 @@ The first item is `t` function, second - the list of actions, which are listed b
 
 `TransProviderActions`
 
-| Function                                                                                         | Description                                                                                                  |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| addResources(<br/>lng, <br/>ns, <br/>resources, <br/>bundleOptions?: { deep?; overwrite? }<br/>) | adds translation resources, see [addResourcesBundle](https://www.i18next.com/overview/api#addresourcebundle) |
-| changeLanguage(lng)                                                                              | changes language and sets new t function                                                                     |
-| getI18next                                                                                       | returns **i18next** instance, see [i18n](https://www.i18next.com/overview/api)                               |
-
-#### `<Trans />`
-
-| Property | Description                                                                                                               | Required |
-| -------- | ------------------------------------------------------------------------------------------------------------------------- | -------- |
-| key      | translation key or keys [TFunctionKeys](https://www.i18next.com/translation-function/essentials)                          | Yes      |
-| options  | t function's options, see: [TOptions \| string](https://www.i18next.com/translation-function/essentials#overview-options) | No       |
+| Function                                                                                                                                         | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| addResources(<br/>&nbsp;&nbsp;lng, <br/>&nbsp;&nbsp;ns, <br/>&nbsp;&nbsp;resources, <br/>&nbsp;&nbsp;bundleOptions?: { deep?; overwrite? }<br/>) | adds translation resources, see [addResourcesBundle](https://www.i18next.com/overview/api#addresourcebundle) |
+| changeLanguage(lng)                                                                                                                              | changes language and sets new t function                                                                     |
+| getI18next                                                                                                                                       | returns **i18next** instance, see [i18n](https://www.i18next.com/overview/api)                               |
