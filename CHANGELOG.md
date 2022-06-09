@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.5
+
+- Update dependencies.
+
 ## 1.1.4
 
 - Fix still persisting i18next warning.

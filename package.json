@@ -3,20 +3,20 @@
   "browser": "./dist/index.mjs",
   "description": "i18next for SolidJS",
   "devDependencies": {
-    "@babel/plugin-transform-runtime": "^7.17.10",
+    "@babel/plugin-transform-runtime": "^7.18.2",
     "@rollup/plugin-typescript": "^8.3.2",
-    "@types/jest": "^27.5.0",
-    "babel-preset-solid": "^1.3.17",
-    "i18next": "^21.7.1",
-    "i18next-http-backend": "^1.4.0",
-    "jest": "^28.1.0",
-    "jest-environment-jsdom": "^28.1.0",
+    "@types/jest": "^28.1.1",
+    "babel-preset-solid": "^1.4.2",
+    "i18next": "^21.8.9",
+    "i18next-http-backend": "^1.4.1",
+    "jest": "^28.1.1",
+    "jest-environment-jsdom": "^28.1.1",
     "rimraf": "^3.0.2",
     "solid-jest": "^0.2.0",
-    "solid-js": "^1.3.17",
+    "solid-js": "^1.4.3",
     "solid-testing-library": "^0.3.0",
-    "typescript": "^4.6.4",
-    "vite": "^2.9.8",
+    "typescript": "^4.7.3",
+    "vite": "^2.9.10",
     "vite-plugin-solid": "^2.2.6"
   },
   "exports": {
@@ -50,7 +50,7 @@
   "name": "@mbarzda/solid-i18next",
   "peerDependencies": {
     "i18next": ">=21.x",
-    "solid-js": "^1.x"
+    "solid-js": "=>1.4.x"
   },
   "repository": "github:mbarzda/solid-i18next",
   "scripts": {
@@ -64,5 +64,5 @@
   },
   "type": "module",
   "types": "./dist/types/index.d.ts",
-  "version": "1.1.4"
+  "version": "1.1.5"
 }

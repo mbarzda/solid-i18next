@@ -1,9 +1,9 @@
-import { Accessor, Component, createEffect, createMemo, createSignal, Index, lazy } from 'solid-js';
+import { Accessor, createEffect, createSignal, Index, lazy, VoidComponent } from 'solid-js';
 import { link, linkActive, main, navigation, opened } from './styles.module.css';
 
 import { navigationSignal } from '$/signals';
 
-export const Main: Component = () => {
+export const Main: VoidComponent = () => {
   const [isOpened, setOpened] = navigationSignal;
   const [active, setActive] = createSignal('Simple');
   const [page, setPage] = createSignal();
@@ -17,7 +17,7 @@ export const Main: Component = () => {
   });
 
   createEffect(() => {
-    let page;
+    let page: VoidComponent;
     switch (active()) {
       case 'Simple':
         page = lazy(() => import('../../pages/Simple'));

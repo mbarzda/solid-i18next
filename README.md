@@ -1,6 +1,8 @@
 # i18next for Solid
 
+![npm (scoped)](https://img.shields.io/npm/v/@mbarzda/solid-i18next?color=seagreen)
 [![codecov](https://codecov.io/gh/mbarzda/solid-i18next/branch/main/graph/badge.svg?token=RGWEZWK8T2)](https://codecov.io/gh/mbarzda/solid-i18next)
+[![npm bundle size](https://img.shields.io/bundlephobia/minzip/@mbarzda/solid-i18next)](https://bundlephobia.com/package/@mbarzda/solid-i18next)
 
 The purpose of this library is to provide ability to support [i18next](https://www.i18next.com/) library in Solid applications
 with `<TransProvider />` and `<Trans />` components.
@@ -17,6 +19,8 @@ with `<TransProvider />` and `<Trans />` components.
 1. [Interpolation](#interpolation)
    1. [Pluralization](#pluralization)
 1. [API](#api)
+   1. [Components](#components)
+   1. [Utilities](#utilities)
 
 ## Usage
 
@@ -261,6 +265,8 @@ const resources = {
 
 ## API
 
+### Components
+
 #### `<TransProvider />`
 
 | Property | Description                                                                                      | Required |
@@ -268,6 +274,15 @@ const resources = {
 | instance | i18next instance, see: [i18n](https://www.i18next.com/overview/api)                              | No       |
 | lng      | default language, `options.lng` overrides it                                                     | No       |
 | options  | i18next init options, see: [InitOptions](https://www.i18next.com/overview/configuration-options) | No       |
+
+#### `<Trans />`
+
+| Property | Description                                                                                                               | Required |
+| -------- | ------------------------------------------------------------------------------------------------------------------------- | -------- |
+| key      | translation key or keys [TFunctionKeys](https://www.i18next.com/translation-function/essentials)                          | Yes      |
+| options  | t function's options, see: [TOptions \| string](https://www.i18next.com/translation-function/essentials#overview-options) | No       |
+
+### Utilities
 
 #### `useTransContext`
 
@@ -277,15 +292,8 @@ The first item is `t` function, second - the list of actions, which are listed b
 
 `TransProviderActions`
 
-| Function                                                                                         | Description                                                                                                  |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| addResources(<br/>lng, <br/>ns, <br/>resources, <br/>bundleOptions?: { deep?; overwrite? }<br/>) | adds translation resources, see [addResourcesBundle](https://www.i18next.com/overview/api#addresourcebundle) |
-| changeLanguage(lng)                                                                              | changes language and sets new t function                                                                     |
-| getI18next                                                                                       | returns **i18next** instance, see [i18n](https://www.i18next.com/overview/api)                               |
-
-#### `<Trans />`
-
-| Property | Description                                                                                                               | Required |
-| -------- | ------------------------------------------------------------------------------------------------------------------------- | -------- |
-| key      | translation key or keys [TFunctionKeys](https://www.i18next.com/translation-function/essentials)                          | Yes      |
-| options  | t function's options, see: [TOptions \| string](https://www.i18next.com/translation-function/essentials#overview-options) | No       |
+| Function                                                                                                                                         | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| addResources(<br/>&nbsp;&nbsp;lng, <br/>&nbsp;&nbsp;ns, <br/>&nbsp;&nbsp;resources, <br/>&nbsp;&nbsp;bundleOptions?: { deep?; overwrite? }<br/>) | adds translation resources, see [addResourcesBundle](https://www.i18next.com/overview/api#addresourcebundle) |
+| changeLanguage(lng)                                                                                                                              | changes language and sets new t function                                                                     |
+| getI18next                                                                                                                                       | returns **i18next** instance, see [i18n](https://www.i18next.com/overview/api)                               |

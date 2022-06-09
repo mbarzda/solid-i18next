@@ -1,8 +1,8 @@
 import { navigationSignal } from '$/signals';
-import { Component } from 'solid-js';
+import { VoidComponent } from 'solid-js';
 import { github, header, heading, menu, opened } from './styles.module.css';
 
-export const Header: Component = () => {
+export const Header: VoidComponent = () => {
   const [isOpened, setOpened] = navigationSignal;
 
   return (

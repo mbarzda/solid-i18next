@@ -1,5 +1,5 @@
 import i18next, { i18n, InitOptions, TFunction, TFunctionKeys, TOptions } from 'i18next';
-import { createContext, createSignal, JSXElement, PropsWithChildren, useContext } from 'solid-js';
+import { createContext, createSignal, JSXElement, ParentComponent, useContext } from 'solid-js';
 
 export interface TransProviderActions {
   addResources(lng: string, ns: string, resources: any): i18n;
@@ -30,9 +30,7 @@ function createTransContext(instance: i18n, options: InitOptions): [TFunction, T
   }
 
   return [
-    (key: TFunctionKeys, defaultValue?: string, options?: TOptions | string) => {
-      return translate()(key, defaultValue, options);
-    },
+    (key: TFunctionKeys, defaultValue?: string, options?: TOptions | string) => translate()(key, defaultValue, options),
     {
       addResources,
       getI18next: () => instance,
@@ -43,8 +41,8 @@ function createTransContext(instance: i18n, options: InitOptions): [TFunction, T
 
 export const useTransContext = () => useContext(TransContext);
 
-export const TransProvider = (
-  props: { instance?: i18n; lng?: string; options?: InitOptions } & PropsWithChildren
+export const TransProvider: ParentComponent<{ instance?: i18n; lng?: string; options?: InitOptions }> = (
+  props
 ): JSXElement => {
   return (
     <TransContext.Provider
