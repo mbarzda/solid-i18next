@@ -2,9 +2,9 @@ import { LanguageSwitcher } from '$/components';
 import { Example } from '$/components/Example';
 import { Trans, TransProvider } from '@mbarzda/solid-i18next';
 import i18next, { InitOptions } from 'i18next';
-import { Component } from 'solid-js';
+import { VoidComponent } from 'solid-js';
 
-const SimplePage: Component = () => {
+const SimplePage: VoidComponent = () => {
   const options: InitOptions = {
     debug: true,
     lng: 'en',

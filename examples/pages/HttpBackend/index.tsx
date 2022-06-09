@@ -1,11 +1,11 @@
 import { Trans, TransProvider } from '@mbarzda/solid-i18next';
-import { Component } from 'solid-js';
+import { VoidComponent } from 'solid-js';
 import i18next, { InitOptions } from 'i18next';
 import HttpBackend from 'i18next-http-backend';
 import { Example, LanguageSwitcher } from '$/components';
 import { HttpBackendLoadTranslations } from './LoadTranslations';
 
-const HttpBackendPage: Component = () => {
+const HttpBackendPage: VoidComponent = () => {
   const instance = i18next.createInstance();
   instance.use(HttpBackend);
 

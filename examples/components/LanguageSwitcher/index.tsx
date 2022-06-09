@@ -1,8 +1,8 @@
 import { useTransContext } from '@mbarzda/solid-i18next';
-import { Component, createSignal, Index } from 'solid-js';
+import { createSignal, Index, VoidComponent } from 'solid-js';
 import { button, buttonActive } from './styles.module.css';
 
-export const LanguageSwitcher: Component<{ languages?: { code: string; title: string }[]; active?: string }> = (
+export const LanguageSwitcher: VoidComponent<{ languages?: { code: string; title: string }[]; active?: string }> = (
   props
 ) => {
   const languages = props.languages ?? [
