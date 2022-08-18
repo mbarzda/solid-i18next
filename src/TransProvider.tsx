@@ -1,11 +1,11 @@
 import i18next, { i18n, InitOptions, TFunction, TFunctionKeys, TOptions } from 'i18next';
 import { createContext, createSignal, JSXElement, ParentComponent, useContext } from 'solid-js';
 
-export interface TransProviderActions {
+export type TransProviderActions = {
   addResources(lng: string, ns: string, resources: any): i18n;
   changeLanguage(lng: string): Promise<void>;
   getI18next(): i18n;
-}
+};
 
 const TransContext = createContext<[TFunction, TransProviderActions]>();
 
