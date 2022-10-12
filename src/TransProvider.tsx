@@ -41,9 +41,7 @@ function createTransContext(instance: i18n, options: InitOptions): [TFunction, T
 
 export const useTransContext = () => useContext(TransContext);
 
-export const TransProvider: ParentComponent<{ instance?: i18n; lng?: string; options?: InitOptions }> = (
-  props
-): JSXElement => {
+export const TransProvider: ParentComponent<{ instance?: i18n; lng?: string; options?: InitOptions }> = (props) => {
   return (
     <TransContext.Provider
       value={createTransContext(props.instance || i18next, { lng: props.lng, ...props.options })}

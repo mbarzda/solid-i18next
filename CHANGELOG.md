@@ -1,8 +1,23 @@
 # Changelog
 
+## 1.1.8
+
+- Update dependencies.
+- Update types.
+
+## 1.1.7
+
+- Update devDependencies.
+- Define `TransProviderActions` as type.
+
+## 1.1.6
+
+- Update peerDependencies.
+
 ## 1.1.5
 
 - Update dependencies.
+- Update types.
 
 ## 1.1.4
 
