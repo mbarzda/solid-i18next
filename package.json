@@ -48,6 +48,9 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "name": "@mbarzda/solid-i18next",
+  "dependencies": {
+    "html-parse-stringify": "^3.0.1"
+  },
   "peerDependencies": {
     "i18next": ">=21.x",
     "solid-js": ">=1.5.x"
