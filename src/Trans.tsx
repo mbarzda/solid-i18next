@@ -7,7 +7,7 @@ type FunctionalJSXElement = ((data: Record<string, string>) => JSXElement);
 interface TransProps { 
   key: TFunctionKeys; 
   options?: TOptions | string;
-  children: JSXElement | FunctionalJSXElement; 
+  children?: JSXElement | FunctionalJSXElement; 
 }
 
 export const Trans = (props: TransProps) => {
@@ -26,7 +26,7 @@ export const Trans = (props: TransProps) => {
 
   return (
     <>{
-      typeof props.children === "string" ? t(props.key, props.children, props.options) : result() 
+      typeof props.children === "function" ? result() : t(props.key, props.children as string, props.options) 
     }</>
   );
 };
