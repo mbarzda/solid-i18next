@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.0
+
+- Add nested jsx support, like [react-i18next](https://react.i18next.com/latest/trans-component) has. Thanks [@Supertigerr](https://github.com/Supertigerr) for the idea ([#21](https://github.com/mbarzda/solid-i18next/pull/21)).
+
 ## 1.1.8
 
 - Update dependencies.
@@ -25,7 +29,7 @@
 
 ## 1.1.3
 
-- Fix warning throw, when translation are not loaded with HttpBackend #13.
+- Fix warning throw, when translation are not loaded with HttpBackend ([#13](https://github.com/mbarzda/solid-i18next/pull/13)).
 - Add examples application.
 - Update dependencies.
 

@@ -80,5 +80,5 @@ export function renderComponent(Comp: Component, language?: string, options: Ini
     return renderToString(renderApp(Comp, language, options));
   }
 
-  return render(renderApp(Comp, language, options)).container.textContent;
+  return render(renderApp(Comp, language, options)).container.innerHTML;
 }

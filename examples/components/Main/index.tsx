@@ -10,6 +10,7 @@ export const Main: VoidComponent = () => {
 
   const links = [
     { path: 'Simple', title: 'Simple' },
+    { path: 'Nested', title: 'Nested' },
     { path: 'HttpBackend', title: 'HttpBackend' },
   ];
   document.addEventListener('keydown', (event: KeyboardEvent) => {
@@ -24,6 +25,9 @@ export const Main: VoidComponent = () => {
         break;
       case 'HttpBackend':
         page = lazy(() => import('../../pages/HttpBackend'));
+        break;
+      case 'Nested':
+        page = lazy(() => import('../../pages/Nested'));
         break;
     }
     setPage(page);
