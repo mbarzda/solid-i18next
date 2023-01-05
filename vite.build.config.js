@@ -18,7 +18,7 @@ export default defineConfig({
       formats: ['es', 'cjs'],
     },
     rollupOptions: {
-      external: ['i18next', 'solid-js', 'solid-js/web'],
+      external: ['i18next', 'solid-js', 'solid-js/web', 'html-parse-string'],
       plugins: [
         typescript({
           tsconfig: resolve('./tsconfig.json'),

@@ -231,6 +231,31 @@ const interpolation = { prefix: '##', suffix: '##' };
 </TransProvider>;
 ```
 
+### Nested JSX
+
+This library supports nested JSX messages, like [react-i18next](https://react.i18next.com/latest/trans-component). If you want use this feature, you need to install [html-parse-string](https://github.com/ryansolid/html-parse-string) separately:
+
+```sh
+npm i html-parse-string
+```
+
+Then you can define your translation strings, like described in [How to get the correct translation string?](https://react.i18next.com/latest/trans-component#how-to-get-the-correct-translation-string).
+
+```tsx
+const resources = {
+  lt: { translation: { greeting_nested: '<0>Sveiki, {{fullName}}! </0><1>Tavo profilis</1>.' } },
+};
+
+<TransProvider options={{ interpolation, resources }}>
+  <Trans key="greeting_nested" options={{ name: 'John Doe' }}>
+    {'Hello {{ name }}! '}
+    <a href="/profile">Your Profile</a>.
+  </Trans>
+</TransProvider>;
+```
+
+Keep in mind that elements, with interpolation, must be a string, e.g: `'Hello {{name}}!'`.
+
 ### Pluralization
 
 **i18next** provides default [pluralization feature](https://www.i18next.com/translation-function/plurals). Note, that pluralization keys [were changed](https://www.i18next.com/misc/migration-guide#json-format-v4-pluralization) since `i18next@21`.

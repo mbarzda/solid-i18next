@@ -1,10 +1,8 @@
-import { createSignal, JSXElement, ParentComponent, Show } from 'solid-js';
+import { children, createSignal, JSXElement, ParentComponent, Show } from 'solid-js';
 import { useTransContext } from '@mbarzda/solid-i18next';
 import { changed, code, translated, translatedSup } from './styles.module.css';
 
-type ExampleProps = { translation?: JSXElement };
-
-const TranslatedText: ParentComponent<ExampleProps> = (props) => {
+const TranslatedText: ParentComponent = (props) => {
   const [_, { getI18next }] = useTransContext();
   const [isLanguageChanged, setIsLanguageChanged] = createSignal(false);
   getI18next().on('languageChanged', () => {
@@ -18,11 +16,12 @@ const TranslatedText: ParentComponent<ExampleProps> = (props) => {
   );
 };
 
-export const Example: ParentComponent<ExampleProps> = (props) => {
+export const Example: ParentComponent<{ translation?: JSXElement }> = (props) => {
+  const getTranslation = children(() => props.translation);
   return (
     <>
-      <Show when={!!props.translation}>
-        <TranslatedText children={props.translation} />
+      <Show when={!!getTranslation()}>
+        <TranslatedText children={getTranslation()} />
       </Show>
 
       <code class={code} children={props.children} />
