@@ -21,13 +21,13 @@ export const Main: VoidComponent = () => {
     let page: VoidComponent;
     switch (active()) {
       case 'Simple':
-        page = lazy(() => import('../../pages/Simple'));
+        page = lazy(() => import('$/pages/Simple'));
         break;
       case 'HttpBackend':
-        page = lazy(() => import('../../pages/HttpBackend'));
+        page = lazy(() => import('$/pages/HttpBackend'));
         break;
       case 'Nested':
-        page = lazy(() => import('../../pages/Nested'));
+        page = lazy(() => import('$/pages/Nested'));
         break;
     }
     setPage(page);

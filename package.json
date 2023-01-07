@@ -57,9 +57,9 @@
   "scripts": {
     "prebuild": "rimraf ./dist",
     "build": "vite build --config vite.build.config.js",
-    "prebuild:dev": "rimraf ./docs",
-    "build:dev": "vite build --config vite.dev.config.js && cp -r ./examples/locales ./docs/locales && cp -r ./examples/favicon.ico ./docs/favicon.ico",
-    "dev": "vite --config vite.dev.config.js",
+    "build:docs": "vite build --config vite.docs.config.js",
+    "postbuild:docs": "cp -r ./docs/locales ./dist/locales && cp -r ./docs/favicon.ico ./dist/favicon.ico",
+    "docs": "vite --config vite.docs.config.js",
     "pretest": "rimraf ./coverage",
     "test": "jest --coverage",
     "test:dev": "jest"

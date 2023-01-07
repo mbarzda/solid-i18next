@@ -12,6 +12,7 @@ const HttpBackendPage: VoidComponent = () => {
   const options: InitOptions = {
     debug: true,
     fallbackLng: '_en',
+    backend: { loadPath: '/solid-i18next/locales/{{lng}}/{{ns}}.json' },
   };
 
   return (

@@ -28,12 +28,12 @@ const ignoreImport = () => {
 };
 
 export default defineConfig({
+  base: '/solid-i18next/',
+  build: { outDir: resolve('./dist') },
   css: {
     modules: { localsConvention: 'camelCaseOnly' },
   },
   plugins: [solidPlugin(), ignoreImport()],
-  resolve: { alias: { '@mbarzda/solid-i18next': resolve('./src/index.ts'), $: resolve('./examples') } },
-  root: './examples',
-  build: { outDir: resolve('./docs') },
-  base: '/solid-i18next/',
+  resolve: { alias: { '@mbarzda/solid-i18next': resolve('./src/index.ts'), $: resolve('./docs') } },
+  root: './docs',
 });
