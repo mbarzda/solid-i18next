@@ -1,7 +1,7 @@
 import { Accessor, createEffect, createSignal, Index, lazy, VoidComponent } from 'solid-js';
 import { link, linkActive, main, navigation, opened } from './styles.module.css';
 
-import { navigationSignal } from '$/signals';
+import { navigationSignal } from '../../signals';
 
 export const Main: VoidComponent = () => {
   const [isOpened, setOpened] = navigationSignal;
