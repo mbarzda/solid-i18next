@@ -11,6 +11,7 @@ export const HttpBackendLoadTranslations: VoidComponent = () => {
   const options: InitOptions = {
     debug: true,
     fallbackLng: 'en',
+    backend: { loadPath: '/solid-i18next/locales/{{lng}}/{{ns}}.json' },
   };
   return (
     <TransProvider options={options} instance={instance}>
