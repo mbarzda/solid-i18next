@@ -1,4 +1,4 @@
-import { navigationSignal } from '../../signals';
+import { navigationSignal } from '$/signals';
 import { VoidComponent } from 'solid-js';
 import { github, header, heading, menu, opened } from './styles.module.css';
 
