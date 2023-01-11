@@ -17,6 +17,7 @@ with `<TransProvider />` and `<Trans />` components.
    1. [i18next Plugins and Utils](#i18next-plugins-and-utils)
    1. [i18next Instance](#i18next-instance)
 1. [Interpolation](#interpolation)
+   1. [Nested JSX](#nested-jsx)
    1. [Pluralization](#pluralization)
 1. [API](#api)
    1. [Components](#components)
