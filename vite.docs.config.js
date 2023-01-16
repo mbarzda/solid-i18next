@@ -1,7 +1,7 @@
+import { createRequire } from 'node:module';
+import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
 import solidPlugin from 'vite-plugin-solid';
-import { resolve } from 'node:path';
-import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
 
 const ignoreImport = () => {
@@ -34,6 +34,6 @@ export default defineConfig({
     modules: { localsConvention: 'camelCaseOnly' },
   },
   plugins: [solidPlugin(), ignoreImport()],
-  resolve: { alias: { '@mbarzda/solid-i18next': resolve('./src/index.ts'), $: resolve('./docs') } },
+  resolve: { alias: { '@mbarzda/solid-i18next': resolve('./src/index.ts'), $: resolve('./docs/src') } },
   root: './docs',
 });

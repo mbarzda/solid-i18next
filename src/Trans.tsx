@@ -1,7 +1,8 @@
-import { TOptions } from 'i18next';
-import { children, ParentComponent } from 'solid-js';
+import type { TOptions } from 'i18next';
+import type { ParentComponent } from 'solid-js';
+import { children } from 'solid-js';
 import { useTransContext } from './TransProvider';
-import { translateJSX } from './utils';
+import { translateJSX } from './utils/index';
 
 export type TransProps = { key: string; options?: TOptions };
 

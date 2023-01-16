@@ -1,5 +1,3 @@
-import typescript from '@rollup/plugin-typescript';
-import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import solidPlugin from 'vite-plugin-solid';
 
@@ -19,12 +17,6 @@ export default defineConfig({
     },
     rollupOptions: {
       external: ['i18next', 'solid-js', 'solid-js/web', 'html-parse-string'],
-      plugins: [
-        typescript({
-          tsconfig: resolve('./tsconfig.json'),
-          include: ['./src/**/*.{ts,tsx}'],
-        }),
-      ],
     },
   },
   plugins: [solidPlugin()],
