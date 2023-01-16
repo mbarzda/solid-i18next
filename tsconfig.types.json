@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "declarationDir": "./dist/types",
+    "emitDeclarationOnly": true,
+    "skipLibCheck": true
+  },
+  "extends": "./tsconfig.json",
+  "include": ["./src/index.ts"]
+}

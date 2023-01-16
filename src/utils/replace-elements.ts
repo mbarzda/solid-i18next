@@ -1,6 +1,5 @@
-// @ts-ignore
-import { IDom } from 'html-parse-string';
-import { InitOptions } from 'i18next';
+import type { IDom } from 'html-parse-string';
+import type { InitOptions } from 'i18next';
 import { hasInterpolation } from './has-interpolation';
 
 export const replaceElements =
