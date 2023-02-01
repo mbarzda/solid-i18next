@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.2
+
+- Update devDependencies;
+- Add peerDependenciesMeta
+
 ## 1.2.1
 
 - Updated devDependencies;
