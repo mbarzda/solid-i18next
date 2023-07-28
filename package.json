@@ -49,7 +49,7 @@
   "name": "@mbarzda/solid-i18next",
   "peerDependencies": {
     "html-parse-string": "<=1.x",
-    "i18next": ">=22.x",
+    "i18next": ">=23.x",
     "solid-js": ">=1.6.x"
   },
   "peerDependenciesMeta": {
