@@ -1,19 +1,11 @@
-import type { parse } from 'html-parse-string';
 import type { i18n, TFunction } from 'i18next';
 import type { ParentProps } from 'solid-js';
 import type { TransProps } from '../Trans';
 import { replaceElements } from './replace-elements';
 import { translateWithInterpolation } from './translate-with-interpolation';
+import { parse } from 'html-parse-string';
 
-export let parseHTML: typeof parse;
-
-(async () => {
-  try {
-    // @ts-ignore
-    const module = await import('html-parse-string');
-    parseHTML = module.parse;
-  } catch {}
-})();
+export const parseHTML = parse;
 
 export const translateJSX = (
   { i18n: { options }, t, props }: { t: TFunction; props: ParentProps<TransProps>; i18n: i18n },
