@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0
+
+- Fix SolidStart SSR issue #27;
+- Updated devDependencies;
+- Updated devDependencies and TranProvider implementation by @JellyBrick #32.
+
 ## 1.2.2
 
 - Update devDependencies;
