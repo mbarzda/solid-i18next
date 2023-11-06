@@ -1,6 +1,5 @@
 {
   "author": "Martynas Barzda <martynas@barzda.pro>",
-  "browser": "./dist/index.mjs",
   "description": "i18next for SolidJS",
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.19.6",
@@ -20,11 +19,11 @@
   },
   "exports": {
     ".": {
-      "browser": "./dist/index.mjs",
-      "import": "./dist/index.mjs",
-      "node": "./dist/index.js",
-      "require": "./dist/index.js",
-      "solid": "./dist/index.mjs"
+      "browser": "./dist/browser.mjs",
+      "import": "./dist/ssr.mjs",
+      "require": "./dist/ssr.js",
+      "types": "./dist/types/index.d.ts",
+      "default": "./dist/browser.mjs"
     }
   },
   "files": [
@@ -44,8 +43,6 @@
     "translations"
   ],
   "license": "MIT",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
   "name": "@mbarzda/solid-i18next",
   "peerDependencies": {
     "html-parse-string": "<=1.x",
@@ -59,9 +56,10 @@
   },
   "repository": "github:mbarzda/solid-i18next",
   "scripts": {
-    "build": "vite build --config vite.build.config.js",
-    "postbuild": "tsc --project tsconfig.types.json",
+    "build:browser": "vite build --config vite.browser.config.js",
     "build:docs": "vite build --config vite.docs.config.js",
+    "build:ssr": "vite build --config vite.ssr.config.js",
+    "build:types": "tsc --project tsconfig.types.json",
     "docs": "vite --config vite.docs.config.js",
     "test": "jest --coverage",
     "test:dev": "jest"
