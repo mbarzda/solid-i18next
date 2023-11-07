@@ -16,5 +16,5 @@
     "target": "esnext",
     "verbatimModuleSyntax": true
   },
-  "include": ["./docs", "./src", "index.d.ts"]
+  "include": ["./docs", "./src", "index.d.ts", "./test"]
 }

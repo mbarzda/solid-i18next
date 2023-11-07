@@ -1,4 +1,4 @@
-import { BackendModule, i18n } from 'i18next';
+import type { BackendModule, i18n } from 'i18next';
 import { TransProvider, useTransContext } from '../src';
 import { messages, renderComponent, resources_lt } from './shared';
 
@@ -84,7 +84,7 @@ describe('TransProvider component', () => {
         expect(t('greeting')).toEqual(null);
         return '';
       };
-      renderComponent(() => <TransProvider instance={i18next} children={Comp} />);
+      renderComponent(() => <TransProvider instance={i18next} children={<Comp />} />);
     });
 
     test('Emit', () => {
@@ -104,7 +104,7 @@ describe('TransProvider component', () => {
         expect(t('greeting')).toEqual('greeting');
         return '';
       };
-      renderComponent(() => <TransProvider instance={i18next} children={Comp} />);
+      renderComponent(() => <TransProvider instance={i18next} children={<Comp />} />);
     });
   });
 });

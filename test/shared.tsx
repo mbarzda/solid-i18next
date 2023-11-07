@@ -1,7 +1,7 @@
-import i18next, { InitOptions } from 'i18next';
-import { Component } from 'solid-js';
+import { render } from '@solidjs/testing-library';
+import i18next, { type InitOptions } from 'i18next';
+import type { Component } from 'solid-js';
 import { renderToString } from 'solid-js/web';
-import { render } from 'solid-testing-library';
 import { TransProvider } from '../src';
 
 export const messages = {

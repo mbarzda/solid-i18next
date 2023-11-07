@@ -3,6 +3,7 @@
   "description": "i18next for SolidJS",
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.23.2",
+    "@solidjs/testing-library": "^0.8.4",
     "@types/jest": "^29.5.7",
     "babel-preset-solid": "^1.8.4",
     "html-parse-string": "^0.0.9",
@@ -12,7 +13,6 @@
     "jest-environment-jsdom": "^29.7.0",
     "solid-jest": "^0.2.0",
     "solid-js": "^1.6.10",
-    "solid-testing-library": "^0.5.1",
     "typescript": "^5.2.2",
     "vite": "^4.5.0",
     "vite-plugin-solid": "^2.6.1"
