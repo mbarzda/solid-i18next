@@ -1,10 +1,22 @@
 # Changelog
 
+## 1.4.1
+
+- Add v1.4.0 release notes to CHANGELOG.md;
+- Update types in TransProvider source code.
+
+## 1.4.0
+
+- Add solid-js>=v1.8.x as peerDependency;
+- Updated typescript type declarations;
+- Updated devDependencies;
+- Add CHANGELOG.md in package's artifact.
+
 ## 1.3.0
 
-- Fix SolidStart SSR issue #27;
+- Fix SolidStart SSR issue ([#27](https://github.com/mbarzda/solid-i18next/issues/27));
 - Updated devDependencies;
-- Updated devDependencies and TranProvider implementation by @JellyBrick #32.
+- Updated devDependencies and TranProvider implementation by [@JellyBrick](https://github.com/JellyBrick) ([#32](https://github.com/mbarzda/solid-i18next/pull/32)).
 
 ## 1.2.2
 
