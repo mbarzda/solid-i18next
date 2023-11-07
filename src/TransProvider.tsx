@@ -1,4 +1,4 @@
-import i18next, { type InitOptions, type TFunction, type TOptions, type i18n } from 'i18next';
+import i18next, { type InitOptions, type TFunction, type i18n } from 'i18next';
 import { createContext, createSignal, useContext, type ParentComponent } from 'solid-js';
 
 export type TransProviderActions = {
@@ -10,8 +10,8 @@ export type TransProviderActions = {
 const TransContext = createContext<[TFunction, TransProviderActions]>();
 
 function createTransContext(instance: i18n, options: InitOptions): [TFunction, TransProviderActions] {
-  const [translate, setTranslate] = createSignal<TFunction>(
-    !!options.resources ? instance.t : ((() => null) as TFunction)
+  const [translate, setTranslate] = createSignal<TFunction | (() => null)>(
+    !!options.resources ? instance.t : () => null
   );
 
   instance.on('loaded', () => setTranslate(() => instance.t));
@@ -32,7 +32,7 @@ function createTransContext(instance: i18n, options: InitOptions): [TFunction, T
   }
 
   return [
-    ((...args: (string | string[] | TOptions)[]) => translate().apply(null, args)) as TFunction,
+    ((...args: Parameters<TFunction>) => translate().apply(null, args)) as TFunction,
     {
       addResources,
       getI18next: () => instance,
