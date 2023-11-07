@@ -27,7 +27,8 @@
     }
   },
   "files": [
-    "dist"
+    "dist",
+    "CHANGELOG.md"
   ],
   "keywords": [
     "i18n",
@@ -43,6 +44,8 @@
     "translations"
   ],
   "license": "MIT",
+  "main": "./dist/ssr.js",
+  "module": "./dist/ssr.mjs",
   "name": "@mbarzda/solid-i18next",
   "peerDependencies": {
     "html-parse-string": "<=1.x",
