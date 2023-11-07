@@ -34,6 +34,6 @@ export default defineConfig({
     modules: { localsConvention: 'camelCaseOnly' },
   },
   plugins: [solidPlugin(), ignoreImport()],
-  resolve: { alias: { '@mbarzda/solid-i18next': resolve('./src/index.ts'), $: resolve('./docs/src') } },
+  resolve: { alias: { '@mbarzda/solid-i18next': resolve('./src/index.ts'), '#': resolve('./docs/src') } },
   root: './docs',
 });

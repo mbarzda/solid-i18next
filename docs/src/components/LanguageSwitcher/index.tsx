@@ -1,5 +1,5 @@
 import { useTransContext } from '@mbarzda/solid-i18next';
-import { createSignal, Index, VoidComponent } from 'solid-js';
+import { createSignal, Index, type VoidComponent } from 'solid-js';
 import { button, buttonActive } from './styles.module.css';
 
 export const LanguageSwitcher: VoidComponent<{ languages?: { code: string; title: string }[]; active?: string }> = (

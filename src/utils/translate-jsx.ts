@@ -1,9 +1,10 @@
 import type { parse } from 'html-parse-string';
-import type { i18n, TFunction } from 'i18next';
+import type { TFunction, i18n } from 'i18next';
 import type { ParentProps } from 'solid-js';
 import type { TransProps } from '../Trans';
 import { replaceElements } from './replace-elements';
 import { translateWithInterpolation } from './translate-with-interpolation';
+
 
 export let parseHTML: typeof parse;
 

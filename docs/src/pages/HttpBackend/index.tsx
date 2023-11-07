@@ -1,8 +1,8 @@
+import { Example, LanguageSwitcher } from '#/components';
 import { Trans, TransProvider } from '@mbarzda/solid-i18next';
-import { VoidComponent } from 'solid-js';
-import i18next, { InitOptions } from 'i18next';
+import i18next, { type InitOptions } from 'i18next';
 import HttpBackend from 'i18next-http-backend';
-import { Example, LanguageSwitcher } from '$/components';
+import type { VoidComponent } from 'solid-js';
 import { HttpBackendLoadTranslations } from './LoadTranslations';
 
 const HttpBackendPage: VoidComponent = () => {

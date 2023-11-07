@@ -1,7 +1,7 @@
-import { Accessor, createEffect, createSignal, Index, lazy, VoidComponent } from 'solid-js';
+import { Index, createEffect, createSignal, lazy, type Accessor, type VoidComponent } from 'solid-js';
 import { link, linkActive, main, navigation, opened } from './styles.module.css';
 
-import { navigationSignal } from '$/signals';
+import { navigationSignal } from '#/signals';
 
 export const Main: VoidComponent = () => {
   const [isOpened, setOpened] = navigationSignal;
@@ -21,19 +21,19 @@ export const Main: VoidComponent = () => {
     let page: VoidComponent;
     switch (active()) {
       case 'Simple':
-        page = lazy(() => import('$/pages/Simple'));
+        page = lazy(() => import('#/pages/Simple'));
         break;
       case 'HttpBackend':
-        page = lazy(() => import('$/pages/HttpBackend'));
+        page = lazy(() => import('#/pages/HttpBackend'));
         break;
       case 'Nested':
-        page = lazy(() => import('$/pages/Nested'));
+        page = lazy(() => import('#/pages/Nested'));
         break;
     }
     setPage(page);
   });
 
-  function onClick(item: Accessor<typeof links[0]>, event: MouseEvent) {
+  function onClick(item: Accessor<(typeof links)[0]>, event: MouseEvent) {
     event.stopPropagation();
     event.preventDefault();
     setActive(item().path);

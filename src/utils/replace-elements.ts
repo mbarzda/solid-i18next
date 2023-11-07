@@ -1,6 +1,7 @@
-import type { IDom } from 'html-parse-string';
-import type { InitOptions } from 'i18next';
-import { hasInterpolation } from './has-interpolation';
+import type { IDom } from "html-parse-string";
+import type { InitOptions } from "i18next";
+import { hasInterpolation } from "./has-interpolation";
+
 
 export const replaceElements =
   (ast: IDom, { interpolation }: InitOptions) =>

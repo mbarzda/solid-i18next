@@ -1,8 +1,7 @@
-import { LanguageSwitcher } from '$/components';
-import { Example } from '$/components/Example';
+import { Example, LanguageSwitcher } from '#/components';
 import { Trans, TransProvider } from '@mbarzda/solid-i18next';
-import i18next, { InitOptions } from 'i18next';
-import { VoidComponent } from 'solid-js';
+import i18next, { type InitOptions } from 'i18next';
+import type { VoidComponent } from 'solid-js';
 
 const SimplePage: VoidComponent = () => {
   const options: InitOptions = {

@@ -1,5 +1,5 @@
-import { navigationSignal } from '$/signals';
-import { VoidComponent } from 'solid-js';
+import { navigationSignal } from '#/signals';
+import type { VoidComponent } from 'solid-js';
 import { github, header, heading, menu, opened } from './styles.module.css';
 
 export const Header: VoidComponent = () => {

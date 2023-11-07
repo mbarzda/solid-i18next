@@ -1,4 +1,2 @@
-export { Trans } from './Trans';
-export type { TransProps } from './Trans';
-export { TransProvider, useTransContext } from './TransProvider';
-export type { TransProviderActions } from './TransProvider';
+export { Trans, type TransProps } from './Trans';
+export { TransProvider, useTransContext, type TransProviderActions } from './TransProvider';

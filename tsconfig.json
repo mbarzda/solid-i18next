@@ -8,11 +8,13 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "outDir": "./dist",
+    "paths": {
+      "#/*": ["./docs/src/*"],
+      "@mbarzda/solid-i18next": ["./src/index.ts"]
+    },
     "resolveJsonModule": true,
     "target": "esnext",
-    "paths": {
-      "@mbarzda/solid-i18next": ["./src/index.ts"],
-      "$/*": ["./docs/*"]
-    }
-  }
+    "verbatimModuleSyntax": true
+  },
+  "include": ["./docs", "./src", "index.d.ts"]
 }
